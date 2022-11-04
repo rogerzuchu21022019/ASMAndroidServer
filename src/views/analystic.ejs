@@ -307,17 +307,10 @@
               <span class="micon bi bi-house"></span><span class="mtext">Home</span>
             </a>
             <ul class="submenu">
-              <li><a href="/">Home</a></li>
+              <li><a href="/<%= home %> ">Home</a></li>
             </ul>
           </li>
-          <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
-              <span class="micon bi bi-textarea-resize"></span><span class="mtext">Forms</span>
-            </a>
-            <ul class="submenu">
-              <li><a href="/<%= register  %>">Register</a></li>
-            </ul>
-          </li>
+         
           <li class="dropdown">
             <a href="javascript:;" class="dropdown-toggle">
               <span class="micon bi bi-table"></span><span class="mtext">Tables</span>
@@ -337,14 +330,7 @@
             </ul>
           </li>
     
-          <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
-              <span class="micon bi bi-archive"></span><span class="mtext"> UI Elements </span>
-            </a>
-            <ul class="submenu">
-              <li><a href="ui-buttons.html">Buttons</a></li>
-            </ul>
-          </li>
+         
         </ul>
       </div>
     </div>
@@ -363,7 +349,7 @@
               <nav aria-label="breadcrumb" role="navigation">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item">
-                    <a href="index.html">Home</a>
+                    <a href="/<%= home %> ">Home</a>
                   </li>
                   <li class="breadcrumb-item active" aria-current="page">
                     Basic Tables
@@ -385,7 +371,7 @@
             </div>
           </div>
         </div>
-
+        	
         <!-- Responsive tables End -->
         Contextual classes Start
         <div class="pd-20 card-box mb-30">

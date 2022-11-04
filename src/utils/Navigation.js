@@ -1,4 +1,5 @@
 const Router = {
+  HOME: "api/home",
   LOGIN: "api/auth-login",
   LOGOUT: "api/auth-logout",
   REGISTER: "api/users/register",

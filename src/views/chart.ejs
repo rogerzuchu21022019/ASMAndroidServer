@@ -4,7 +4,7 @@
 <head>
   <!-- Basic Page Info -->
   <meta charset="utf-8" />
-  <title>DeskApp - Bootstrap Admin Dashboard HTML Template</title>
+  <title>Home</title>
 
   <!-- Site favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png" />
@@ -201,7 +201,7 @@
             <a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
             <a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a>
             <a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a>
-                                 <a class="dropdown-item" href="/<%= login %> "><i class="dw dw-logout"></i> Log Out</a>
+            <a class="dropdown-item" href="/<%= login %> "><i class="dw dw-logout"></i> Log Out</a>
 
           </div>
         </div>
@@ -290,74 +290,51 @@
   </div>
 
   <div class="left-side-bar">
-      <div class="brand-logo">
-        <a href="/">
-          <img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo" />
-          <img
-            src="vendors/images/deskapp-logo-white.svg"
-            alt=""
-            class="light-logo"
-          />
-        </a>
-        <div class="close-sidebar" data-toggle="left-sidebar-close">
-          <i class="ion-close-round"></i>
-        </div>
-      </div>
-      <div class="menu-block customscroll">
-        <div class="sidebar-menu">
-          <ul id="accordion-menu">
-            <li class="dropdown">
-              <a href="javascript:;" class="dropdown-toggle">
-                <span class="micon bi bi-house"></span
-                ><span class="mtext">Home</span>
-              </a>
-              <ul class="submenu">
-                <li><a href="/">Home</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="javascript:;" class="dropdown-toggle">
-                <span class="micon bi bi-textarea-resize"></span
-                ><span class="mtext">Forms</span>
-              </a>
-              <ul class="submenu">
-                <li><a href= "/<%= register  %>" >Register</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="javascript:;" class="dropdown-toggle">
-                <span class="micon bi bi-table"></span
-                ><span class="mtext">Tables</span>
-              </a>
-              <ul class="submenu">
-                <li><a href= "/<%= analystic %>" >Analystic</a></li>
-                <li><a href=  "/<%= data_table %>" >Data Table</a></li>
-              </ul>
-            </li>
-
-            <li class="dropdown">
-              <a href="javascript:;" class="dropdown-toggle">
-                <span class="micon bi bi-pie-chart"></span
-                ><span class="mtext">Charts</span>
-              </a>
-              <ul class="submenu">
-                <li><a href="/<%= chart %>" >Chart</a></li>
-              </ul>
-            </li>
-      
-            <li class="dropdown">
-              <a href="javascript:;" class="dropdown-toggle">
-                <span class="micon bi bi-archive"></span
-                ><span class="mtext"> UI Elements </span>
-              </a>
-              <ul class="submenu">
-                <li><a href="ui-buttons.html">Buttons</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
+    <div class="brand-logo">
+      <a href="/">
+        <img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo" />
+        <img src="vendors/images/deskapp-logo-white.svg" alt="" class="light-logo" />
+      </a>
+      <div class="close-sidebar" data-toggle="left-sidebar-close">
+        <i class="ion-close-round"></i>
       </div>
     </div>
+    <div class="menu-block customscroll">
+      <div class="sidebar-menu">
+        <ul id="accordion-menu">
+          <li class="dropdown">
+            <a href="javascript:;" class="dropdown-toggle">
+              <span class="micon bi bi-house"></span><span class="mtext">Home</span>
+            </a>
+            <ul class="submenu">
+              <a href="/<%= home %> ">Home</a>
+            </ul>
+          </li>
+         
+          <li class="dropdown">
+            <a href="javascript:;" class="dropdown-toggle">
+              <span class="micon bi bi-table"></span><span class="mtext">Tables</span>
+            </a>
+            <ul class="submenu">
+              <li><a href="/<%= analystic %>">Analystic</a></li>
+              <li><a href="/<%= data_table %>">Data Table</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="javascript:;" class="dropdown-toggle">
+              <span class="micon bi bi-pie-chart"></span><span class="mtext">Charts</span>
+            </a>
+            <ul class="submenu">
+              <li><a href="/<%= chart %>">Chart</a></li>
+            </ul>
+          </li>
+
+        
+        </ul>
+      </div>
+    </div>
+  </div>
   <div class="mobile-menu-overlay"></div>
 
   <div class="main-container">
@@ -367,82 +344,28 @@
           <div class="row">
             <div class="col-md-6 col-sm-12">
               <div class="title">
-                <h4>Apexcharts</h4>
+                <h4>Charts</h4>
               </div>
               <nav aria-label="breadcrumb" role="navigation">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item">
-                    <a href="index.html">Home</a>
+                    <a href="/<%= home %> ">Home</a>
                   </li>
-                  <li class="breadcrumb-item active" aria-current="page">
-                    Charts
-                  </li>
+
                 </ol>
               </nav>
             </div>
-            <div class="col-md-6 col-sm-12 text-right">
-              <div class="dropdown">
-                <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                  January 2020
-                </a>
-                <div class="dropdown-menu dropdown-menu-right">
-                  <a class="dropdown-item" href="#">Export List</a>
-                  <a class="dropdown-item" href="#">Policies</a>
-                  <a class="dropdown-item" href="#">View Assets</a>
-                </div>
-              </div>
-            </div>
           </div>
+
         </div>
-        <div class="bg-white pd-20 card-box mb-30">
-          <h4 class="h4 text-blue">line Chart</h4>
-          <div id="chart1"></div>
-        </div>
-        <div class="bg-white pd-20 card-box mb-30">
-          <h4 class="h4 text-blue">Area Chart</h4>
-          <div id="chart2"></div>
-        </div>
-        <div class="bg-white pd-20 card-box mb-30">
-          <h4 class="h4 text-blue">Column Chart</h4>
-          <div id="chart3"></div>
-        </div>
-        <div class="bg-white pd-20 card-box mb-30">
-          <h4 class="h4 text-blue">Bar Chart</h4>
-          <div id="chart4"></div>
-        </div>
-        <div class="bg-white pd-20 card-box mb-30">
-          <h4 class="h4 text-blue">Mixed Chart</h4>
-          <div id="chart5"></div>
-        </div>
-        <div class="bg-white pd-20 card-box mb-30">
-          <h4 class="h4 text-blue">Timeline Chart</h4>
-          <div id="chart6"></div>
-        </div>
-        <div class="bg-white pd-20 card-box mb-30">
-          <h4 class="h4 text-blue">Candlestick Chart</h4>
-          <div id="chart7"></div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 mb-30">
-            <div class="pd-20 card-box height-100-p">
-              <h4 class="h4 text-blue">Pie Chart</h4>
-              <div id="chart8"></div>
-            </div>
-          </div>
-          <div class="col-md-6 mb-30">
-            <div class="pd-20 card-box height-100-p">
-              <h4 class="h4 text-blue">Radial Bar Chart</h4>
-              <div id="chart9"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer-wrap pd-20 mb-20 card-box">
-        DeskApp - Bootstrap 4 Admin Template By
-        <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
+        <h4 class="h4 text-blue">line Chart</h4>
+        <div id="chart2"></div>
       </div>
     </div>
+
   </div>
+
+
   <!-- welcome modal start -->
   <div class="welcome-modal">
     <button class="welcome-modal-close">
@@ -489,7 +412,7 @@
   <script src="vendors/scripts/script.min.js"></script>
   <script src="vendors/scripts/process.js"></script>
   <script src="vendors/scripts/layout-settings.js"></script>
-  <script src="src/plugins/apexcharts/apexcharts.min.js"></script>
+  <script src="vendors/plugins/apexcharts/apexcharts.min.js"></script>
   <script src="vendors/scripts/apexcharts-setting.js"></script>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>

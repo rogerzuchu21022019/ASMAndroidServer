@@ -5,6 +5,7 @@ const navigation = require(`../utils/Navigation`)
 /* GET users listing. */
 router.get('/data-table', function(req, res, next) {
   res.render('data-table',{
+    home: navigation.HOME,
     login: navigation.LOGIN,
     logout: navigation.LOGOUT,
     chart: navigation.CHART,

@@ -86,7 +86,7 @@
 				</div>
 				<div class="login-menu">
 					<ul>
-						<li><a href="/register">Register</a></li>
+						<li><a href="/<%= register %> ">Register</a></li>
 					</ul>
 				</div>
 			</div>
@@ -138,6 +138,7 @@
 										type="text"
 										class="form-control form-control-lg"
 										placeholder="Username"
+										value="<%= user ? user.name : '#' %> "
 									/>
 									<div class="input-group-append custom">
 										<span class="input-group-text"
@@ -185,7 +186,7 @@
 										-->
 											<a
 												class="btn btn-primary btn-lg btn-block"
-												href="/"
+												href="/<%= home %> "
 												>Sign In</a
 											>
 										</div>
@@ -198,7 +199,7 @@
 										<div class="input-group mb-0">
 											<a
 												class="btn btn-outline-primary btn-lg btn-block"
-												href="/register"
+												href="/<%= register %> "
 												>Register To Create Account</a
 											>
 										</div>

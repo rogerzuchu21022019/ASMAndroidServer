@@ -4,7 +4,9 @@ const navigation = require(`../utils/Navigation`);
 
 /* GET users listing. */
 router.get("/register", (req, res, next) => {
+  
   res.render("register", {
+    home: navigation.HOME,
     login: navigation.LOGIN,
     logout: navigation.LOGOUT,
     chart: navigation.CHART,
