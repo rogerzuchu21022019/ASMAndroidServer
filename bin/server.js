@@ -1,4 +1,4 @@
-const cool = require("cool-ascii-faces");
+// const cool = require("cool-ascii-faces");
 const app = require(`../src/app`);
 require(`dotenv`).config();
 // require(`../src/middlewares/RedisConnection`);
