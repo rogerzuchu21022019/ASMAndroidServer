@@ -136,9 +136,10 @@
 								<div class="input-group custom">
 									<input
 										type="text"
+										required
 										class="form-control form-control-lg"
 										placeholder="Username"
-										value="<%= user ? user.name : '#' %> "
+										value="<%= user ? user.trim() : '' %> "
 									/>
 									<div class="input-group-append custom">
 										<span class="input-group-text"

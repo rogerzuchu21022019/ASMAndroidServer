@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 const navigation = require(`../utils/Navigation`)
 
-router.get("/auth-login", (req, res, next) => {
+router.all("/auth-login", (req, res, next) => {
   let user = req.body 
   console.log("🚀 ~ file: login.js ~ line 7 ~ router.all ~ user", user)
   // res.redirect(``);
@@ -15,7 +15,7 @@ router.get("/auth-login", (req, res, next) => {
     register: navigation.REGISTER,
     analystic: navigation.ANALYSTIC,
     data_table: navigation.DATATABLE,
-    user:user,
+    user:user.name,
   });
 });
 
