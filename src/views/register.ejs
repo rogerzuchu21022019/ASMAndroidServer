@@ -201,7 +201,7 @@
             <a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
             <a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a>
             <a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a>
-            <a class="dropdown-item" href="login.html"><i class="dw dw-logout"></i> Log Out</a>
+            <a class="dropdown-item" href="/<%= login %> "><i class="dw dw-logout"></i> Log Out</a>
           </div>
         </div>
       </div>
@@ -289,73 +289,74 @@
   </div>
 
   <div class="left-side-bar">
-    <div class="brand-logo">
-      <a href="/">
-        <img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo" />
-        <img src="vendors/images/deskapp-logo-white.svg" alt="" class="light-logo" />
-      </a>
-      <div class="close-sidebar" data-toggle="left-sidebar-close">
-        <i class="ion-close-round"></i>
+      <div class="brand-logo">
+        <a href="/">
+          <img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo" />
+          <img
+            src="vendors/images/deskapp-logo-white.svg"
+            alt=""
+            class="light-logo"
+          />
+        </a>
+        <div class="close-sidebar" data-toggle="left-sidebar-close">
+          <i class="ion-close-round"></i>
+        </div>
+      </div>
+      <div class="menu-block customscroll">
+        <div class="sidebar-menu">
+          <ul id="accordion-menu">
+            <li class="dropdown">
+              <a href="javascript:;" class="dropdown-toggle">
+                <span class="micon bi bi-house"></span
+                ><span class="mtext">Home</span>
+              </a>
+              <ul class="submenu">
+                <li><a href="/">Home</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="javascript:;" class="dropdown-toggle">
+                <span class="micon bi bi-textarea-resize"></span
+                ><span class="mtext">Forms</span>
+              </a>
+              <ul class="submenu">
+                <li><a href= "/<%= register  %>" >Register</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="javascript:;" class="dropdown-toggle">
+                <span class="micon bi bi-table"></span
+                ><span class="mtext">Tables</span>
+              </a>
+              <ul class="submenu">
+                <li><a href= "/<%= analystic %>" >Analystic</a></li>
+                <li><a href=  "/<%= data_table %>" >Data Table</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="javascript:;" class="dropdown-toggle">
+                <span class="micon bi bi-pie-chart"></span
+                ><span class="mtext">Charts</span>
+              </a>
+              <ul class="submenu">
+                <li><a href="/<%= chart %>" >Chart</a></li>
+              </ul>
+            </li>
+          
+            <li class="dropdown">
+              <a href="javascript:;" class="dropdown-toggle">
+                <span class="micon bi bi-archive"></span
+                ><span class="mtext"> UI Elements </span>
+              </a>
+              <ul class="submenu">
+                <li><a href="ui-buttons.html">Buttons</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-    <div class="menu-block customscroll">
-      <div class="sidebar-menu">
-        <ul id="accordion-menu">
-          <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
-              <span class="micon bi bi-house"></span><span class="mtext">Home</span>
-            </a>
-            <ul class="submenu">
-              <li><a href="/">Home</a></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
-              <span class="micon bi bi-textarea-resize"></span><span class="mtext">Forms</span>
-            </a>
-            <ul class="submenu">
-              <li><a href=<%= register %>>Register</a></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
-              <span class="micon bi bi-table"></span><span class="mtext">Tables</span>
-            </a>
-            <ul class="submenu">
-              <li><a href=<%= analystic %>>Analystic</a></li>
-              <li><a href=<%= data_table %>>Data Table</a></li>
-            </ul>
-          </li>
-
-          <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
-              <span class="micon bi bi-pie-chart"></span><span class="mtext">Charts</span>
-            </a>
-            <ul class="submenu">
-              <li><a href=<%= chart %>>Chart</a></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
-              <span class="micon bi bi-file-earmark-text"></span><span class="mtext">Additional Pages</span>
-            </a>
-            <ul class="submenu">
-              <li><a href=<%= login %>> Login</a></li>
-
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
-              <span class="micon bi bi-archive"></span><span class="mtext"> UI Elements </span>
-            </a>
-            <ul class="submenu">
-              <li><a href="ui-buttons.html">Buttons</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
   <div class="mobile-menu-overlay"></div>
 
   <div class="main-container">
