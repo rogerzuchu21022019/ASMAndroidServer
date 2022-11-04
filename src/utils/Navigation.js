@@ -1,8 +1,10 @@
 const Router = {
-  LOGIN: "api/v1/auth-login",
-  LOGOUT: "api/v1/auth/logout",
-  REGISTER: "api/v1/auth/register",
-  CHART: "api/v1/auth/chart",
+  LOGIN: "api/auth-login",
+  LOGOUT: "api/auth-logout",
+  REGISTER: "api/users/register",
+  CHART: "api/products/chart",
+  ANALYSTIC: "api/products/analystic",
+  DATATABLE: "api/products/data-table",
 };
 
 module.exports = Router;

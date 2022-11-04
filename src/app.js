@@ -25,23 +25,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json())
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/', indexRouter);
-app.use('/api/v1', loginRouter);
-app.use('/api/v1', logoutRouter);
-app.use('/register', registerRouter);
-app.use("/chart", chartRouter);
-app.use("/data-table", dataTableRouter);
-app.use("/analystic", analysticRouter);
-app.use('/users', usersRouter);
+const fixPublic = express.static(path.join(__dirname, "public"));
+app.use(fixPublic);
 
-// app.use("/", indexRouter);
-// app.use("/login", loginRouter);
-// app.use("/register", registerRouter);
-// app.use("/chart", chartRouter);
-// app.use("/data-table", dataTableRouter);
-// app.use("/analystic", analysticRouter);
-// app.use("/users", usersRouter);
+app.use('/', indexRouter);
+app.use("/api", loginRouter, fixPublic);
+app.use("/api", logoutRouter, fixPublic);
+app.use("/api/users", registerRouter, fixPublic);
+app.use("/api/products", chartRouter, fixPublic);
+app.use("/api/products", dataTableRouter, fixPublic);
+app.use("/api/products", analysticRouter, fixPublic);
+app.use("/users", usersRouter, fixPublic);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

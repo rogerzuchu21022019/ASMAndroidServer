@@ -1,12 +1,17 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-const navigation = require(`../utils/Navigation`)
+const navigation = require(`../utils/Navigation`);
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  
-  console.log("🚀 ~ file: index.js ~ line 7 ~ router.get ~ navigation", navigation.LOGIN)
-  res.render('index',{navigation:navigation.LOGIN});
+router.get("/", function (req, res, next) {
+ 
+  res.render("index", {
+    login: navigation.LOGIN,
+    logout: navigation.LOGOUT,
+    chart: navigation.CHART,
+    register: navigation.REGISTER,
+    analystic: navigation.ANALYSTIC,
+    data_table: navigation.DATATABLE,
+  });
 });
-
 
 module.exports = router;

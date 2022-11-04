@@ -1,9 +1,16 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-router.get('/auth-login', function(req, res, next) {
-  const response = req.body
-  
-  res.render('login');
+const navigation = require(`../utils/Navigation`)
+
+router.get("/auth-login", (req, res, next) => {
+  res.render("login",{
+    login: navigation.LOGIN,
+    logout: navigation.LOGOUT,
+    chart: navigation.CHART,
+    register: navigation.REGISTER,
+    analystic: navigation.ANALYSTIC,
+    data_table: navigation.DATATABLE,
+  });
 });
 
 module.exports = router;
