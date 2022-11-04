@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "start": "node ./bin/server",
+    "dev": "nodemon ./bin/server"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^16.0.3",
@@ -19,6 +20,7 @@
     "mongoose": "^6.7.1",
     "morgan": "~1.9.1",
     "nodemon": "^2.0.20",
-    "randombytes": "^2.1.0"
+    "randombytes": "^2.1.0",
+    "redis": "^4.4.0"
   }
 }
