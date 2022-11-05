@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-const navigation = require(`../../../../utils/Navigation`);
+const navigation = require(`../../../../utils/client-web/Navigation`);
 
 router.all("/auth-login", (req, res, next) => {
   let user = req.body;

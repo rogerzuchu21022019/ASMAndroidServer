@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const navigation = require(`../../../utils/Navigation`);
+const navigation = require(`../../../utils/client-web/Navigation`);
 /* GET home page. */
 router.get("/home", function (req, res, next) {
   res.render("home", {

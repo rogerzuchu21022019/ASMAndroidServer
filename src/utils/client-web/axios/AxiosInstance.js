@@ -4,8 +4,6 @@ import Axios from "axios";
 import redisClient from "../../../middlewares/RedisConnection";
 import { BaseUrl } from "./BaseUrl";
 
-
-
 export const AxiosInstance = () => {
   const axios = Axios.create({
     // baseURL: BaseUrl.Main,
