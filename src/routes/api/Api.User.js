@@ -8,7 +8,6 @@ const USERS = "users";
 
 const SUB = `${MAIN}/${USERS}`;
 
-
 const login = BaseRouter(MAIN, loginRouter);
 const logout = BaseRouter(MAIN, logoutRouter);
 const register = BaseRouter(SUB, registerRouter);
