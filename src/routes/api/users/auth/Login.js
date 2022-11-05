@@ -5,7 +5,6 @@ const navigation = require(`../../../../utils/Navigation`);
 router.all("/auth-login", (req, res, next) => {
   let user = req.body;
   console.log("🚀 ~ file: login.js ~ line 7 ~ router.all ~ user", user);
-  // res.redirect(``);
 
   res.render("login", {
     home: navigation.HOME,

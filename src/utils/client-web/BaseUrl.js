@@ -1,7 +1,10 @@
 
 const BaseRouter = (subDirectory, endPoint) => {
   let baseUrl = `${subDirectory}${endPoint}`;
-    return baseUrl
+    return  (req,res,next) => {
+     next(baseUrl)
+    }
 };
+
 
 module.exports = BaseRouter

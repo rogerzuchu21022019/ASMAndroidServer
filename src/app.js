@@ -10,6 +10,7 @@ const app = express();
 
 
 ManagerMiddleware(app);
+
 const fixPublic = express.static(path.join(__dirname, "public"));
 
 ManagerRouter(app,fixPublic);
