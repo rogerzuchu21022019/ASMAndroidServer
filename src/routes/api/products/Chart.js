@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
-const navigation = require(`../utils/Navigation`)
+const navigation = require(`../../../utils/Navigation`)
 
 /* GET users listing. */
-router.get('/data-table', function(req, res, next) {
-  res.render('data-table',{
+router.get('/chart', function(req, res, next) {
+  res.render('chart',{
     home: navigation.HOME,
     login: navigation.LOGIN,
     logout: navigation.LOGOUT,

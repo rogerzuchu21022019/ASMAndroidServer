@@ -1,9 +1,9 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-const navigation = require(`../utils/Navigation`)
+const navigation = require(`../../../utils/Navigation`);
 /* GET users listing. */
 router.get("/analystic", function (req, res, next) {
-  res.render("analystic",{
+  res.render("analystic", {
     home: navigation.HOME,
     login: navigation.LOGIN,
     logout: navigation.LOGOUT,
