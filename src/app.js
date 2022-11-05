@@ -8,8 +8,8 @@ const ManagerRouter = require("./routes/manager/Manager");
 
 const app = express();
 
-ManagerMiddleware(app);
 
+ManagerMiddleware(app);
 const fixPublic = express.static(path.join(__dirname, "public"));
 
 ManagerRouter(app,fixPublic);

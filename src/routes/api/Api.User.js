@@ -8,9 +8,11 @@ const USERS = "users";
 
 const SUB = `${MAIN}/${USERS}`;
 
-const login = BaseRouter(MAIN, loginRouter);
-const logout = BaseRouter(MAIN, logoutRouter);
-const register = BaseRouter(SUB, registerRouter);
+const login = BaseRouter(MAIN, loginRouter.stack[0].route.path);
+console.log("🚀 ~ file: Api.User.js ~ line 12 ~ login", login)
+
+const logout = BaseRouter(MAIN, logoutRouter.stack[0].route.path);
+const register = BaseRouter(SUB, registerRouter.stack[0].route.path);
 
 module.exports = {
   login,
