@@ -1,14 +1,13 @@
 /* Check import lại mấy cái router này khi import */
-const ApiUser = require("../api/Api.User");
-const ApiProduct = require(`../api/Api.Product`);
+const ApiUser = require("../api/Api_User");
+const ApiProduct = require(`../api/Api_Product`);
 
 const ManagerRouter = (app, fixPublic) => {
-  
-  const MAIN = "/api"; 
+  const MAIN = "/api";
   const USERS = "users";
   const PRODUCTS = "products";
-  const SUB_USERS = `${MAIN}/${USERS}`; 
-  const SUB_PRODUCTS = `${MAIN}/${PRODUCTS}`; 
+  const SUB_USERS = `${MAIN}/${USERS}`;
+  const SUB_PRODUCTS = `${MAIN}/${PRODUCTS}`;
   /* Users */
   app.use(MAIN, ApiUser.loginRouter, fixPublic);
   app.use(MAIN, ApiUser.logoutRouter, fixPublic);

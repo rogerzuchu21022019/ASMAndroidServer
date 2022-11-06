@@ -6,14 +6,12 @@ var userSchema = new mongoose.Schema(
     name: {
       type: String,
       required: false,
-      
     },
     email: {
       type: String,
       lowercase: true,
       required: true,
       unique: true,
-      
     },
     phone: {
       type: String,
@@ -27,11 +25,13 @@ var userSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
+    imageUrl: {
+      type: String,
+      require: false,
+    },
   },
-  { collection: "User Collection", timestamps: true }
+  { collection: "User Collection", timestamps: true, typeKey: "type" }
 );
 
 //Export the model
 module.exports = userConnection.model("User", userSchema);
-
-
