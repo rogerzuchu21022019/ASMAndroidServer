@@ -3,6 +3,10 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const bodyParser = require("body-parser");
 const express = require("express");
+const session = require(`express-session`);
+const Redis = require(`ioredis`);
+const Redis_Store = require(`connect-redis`)(session);
+const redisClient = new Redis();
 
 const ManagerMiddleware = (app) => {
   app.set("views", path.join(__dirname, "../views"));
@@ -13,6 +17,16 @@ const ManagerMiddleware = (app) => {
   app.use(express.urlencoded({ extended: true }));
   app.use(bodyParser.json());
   app.use(cookieParser());
+
+  app.use(
+    session({
+      secret: "keyboard cat",
+      store: new Redis_Store({ client: redisClient }),
+      resave: false,
+      saveUninitialized: true,
+      cookie: { secure: true, maxAge: 5 * 60 * 1000, httpOnly: true },
+    })
+  );
 
   const fixPublic = express.static(path.join(__dirname, "public"));
   app.use(fixPublic);
