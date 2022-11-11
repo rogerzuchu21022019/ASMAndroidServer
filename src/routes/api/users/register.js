@@ -18,24 +18,43 @@ router.get("/register", (req, res, next) => {
 
 router.post("/register", async (req, res, next) => {
   try {
-    const { email, password, address, name, phone } = req.body;
+    const { name, email, phone, password, address, imageUrl, role } = req.body;
     const data = await registerController(
+      name,
       email,
+      phone,
       password,
       address,
-      name,
-      phone
+      imageUrl,
+      role
     );
-    return res.status(200).json({
-      message: " Register Success",
-      error: false,
-      data: data,
-    });
+    data
+      ? res.status(200).json({
+          status: `Success`,
+          message: "Register Success",
+          error: false,
+          isRegisted: false,
+          data: {
+            id: data.id,
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            address: data.address,
+            imageUrl: data.imageUrl,
+            dob: data.dob,
+            role: data.role,
+            createdAt: data.createdAt,
+            updatedAt: data.updatedAt,
+          },
+        })
+      : res.status(400).json({
+          status: `Fail`,
+          message: `Register Fail`,
+          error: true,
+          isRegisted: true,
+        });
   } catch (error) {
-    res.status(500).json({
-      error: true,
-      message: error.message,
-    });
+    // next(error);
   }
 });
 

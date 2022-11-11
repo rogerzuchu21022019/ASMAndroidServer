@@ -1,21 +1,29 @@
 const UserModel = require("../User_Model");
 
 const createError = require(`http-errors`);
-const RegisterService = (email, password, phone, address, name) => {
-  const user = UserModel.create({
-    email,
-    password,
-    phone,
-    address,
+const RegisterService = async (
+  name,
+  email,
+  phone,
+  password,
+  address,
+  imageUrl,
+  role
+) => {
+  const user = await UserModel.create({
     name,
+    email,
+    phone,
+    password,
+    address,
+    imageUrl,
+    role,
   });
-  if (user == null) {
-    createError(400);
-  }
+
   if (!user) {
     createError(401);
   }
-  UserModel.findOne({
+  await UserModel.findOne({
     email,
   })
     .then((err, data) => console.log("data pending", data))

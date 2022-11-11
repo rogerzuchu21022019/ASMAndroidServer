@@ -1,0 +1,35 @@
+/* Check import lại mấy cái router này khi import */
+const ApiUser = require("../api/Api_User");
+const ApiProduct = require(`../api/Api_Product`);
+const ApiAdmin = require(`../api/Api_Admin`);
+
+const ApiManagerRouter = (app, fixPublic) => {
+  const MAIN = "/api";
+  const USERS = "users";
+  const PRODUCTS = "products";
+  const SUB_USERS = `${MAIN}/${USERS}`;
+  const SUB_PRODUCTS = `${MAIN}/${PRODUCTS}`;
+  /* Admin */
+  app.use(MAIN, ApiAdmin.getUsers, fixPublic);
+  app.use(MAIN, ApiAdmin.getUser, fixPublic);
+  app.use(MAIN, ApiAdmin.updateUser, fixPublic);
+  app.use(MAIN, ApiAdmin.deleteUser, fixPublic);
+  /* Users */
+  
+  app.use(MAIN, ApiUser.loginRouter, fixPublic);
+  app.use(MAIN, ApiUser.logoutRouter, fixPublic);
+  app.use(SUB_USERS, ApiUser.registerRouter, fixPublic);
+
+  /* Products */
+  app.use(MAIN, ApiProduct.home, fixPublic);
+  app.use(SUB_PRODUCTS, ApiProduct.analystic, fixPublic);
+  app.use(SUB_PRODUCTS, ApiProduct.chart, fixPublic);
+  app.use(SUB_PRODUCTS, ApiProduct.dataTable, fixPublic);
+
+  app.use(SUB_PRODUCTS, ApiProduct.add, fixPublic);
+  app.use(SUB_PRODUCTS, ApiProduct.findAll, fixPublic);
+  app.use(SUB_PRODUCTS, ApiProduct.findByID, fixPublic);
+  app.use(SUB_PRODUCTS, ApiProduct.search, fixPublic);
+};
+
+module.exports = ApiManagerRouter;

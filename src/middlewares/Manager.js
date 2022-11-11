@@ -7,11 +7,13 @@ const session = require(`express-session`);
 const Redis = require(`ioredis`);
 const Redis_Store = require(`connect-redis`)(session);
 const redisClient = new Redis();
+const cors = require(`cors`)
 
 const ManagerMiddleware = (app) => {
   app.set("views", path.join(__dirname, "../views"));
   app.set("view engine", "ejs");
 
+  app.use(cors())
   app.use(logger("dev"));
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
@@ -30,6 +32,8 @@ const ManagerMiddleware = (app) => {
 
   const fixPublic = express.static(path.join(__dirname, "public"));
   app.use(fixPublic);
+
+  
 };
 
 module.exports = ManagerMiddleware;

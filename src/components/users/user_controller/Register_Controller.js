@@ -1,12 +1,22 @@
 const registerService = require("../user_service/Register_Service");
 
-const RegisterController = async (email, password, phone, address, name) => {
+const RegisterController = async (
+  name,
+  email,
+  phone,
+  password,
+  address,
+  imageUrl,
+  role
+) => {
   const savedUser = await registerService(
+    name,
     email,
-    password,
     phone,
+    password,
     address,
-    name
+    imageUrl,
+    role
   );
   return savedUser;
 };
