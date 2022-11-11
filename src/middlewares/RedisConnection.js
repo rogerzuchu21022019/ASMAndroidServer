@@ -1,13 +1,12 @@
 const { createClient } = require(`redis`);
 
 const client = createClient();
-client.connect();
 console.log(`Server redis connection established`);
 
 const runClientSet = 
-
 async (key,value,options,callback) => {
-  client.on("error", (err) => console.log("Redis Client Error", err));
+  client.connect();
+  client.on("Info log Redis", (err) => console.log("Redis Client Error", err));
   return await client.set(key, value, options,callback);
 };
 
@@ -18,6 +17,5 @@ const runClientGet = async (key,callback) => {
   return getValue;
 };
 
-module.exports = client
+module.exports = {runClientGet,runClientSet}
 
-523
