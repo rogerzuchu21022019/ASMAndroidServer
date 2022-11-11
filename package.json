@@ -6,7 +6,7 @@
     "start": "node ./bin/server",
     "dev": "nodemon ./bin/server",
     "engines": {
-      "node": "v18.11.9"
+      "node": "v18.12.1"
     }
   },
   "dependencies": {
