@@ -6,6 +6,8 @@ const Router = {
   CHART: "products/chart",
   ANALYSTIC: "products/analystic",
   DATATABLE: "products/data-table",
+  AREA: "products/area",
+  ODD_NUMBER: "products/odd-number",
 };
 
 module.exports = Router;

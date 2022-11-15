@@ -10,6 +10,7 @@ const ApiManagerRouter = (app, fixPublic) => {
   const SUB_USERS = `${MAIN}/${USERS}`;
   const SUB_PRODUCTS = `${MAIN}/${PRODUCTS}`;
   /* Admin */
+
   app.use(MAIN, ApiAdmin.getUsers, fixPublic);
   app.use(MAIN, ApiAdmin.getUser, fixPublic);
   app.use(MAIN, ApiAdmin.updateUser, fixPublic);
@@ -30,6 +31,10 @@ const ApiManagerRouter = (app, fixPublic) => {
   app.use(SUB_PRODUCTS, ApiProduct.findAll, fixPublic);
   app.use(SUB_PRODUCTS, ApiProduct.findByID, fixPublic);
   app.use(SUB_PRODUCTS, ApiProduct.search, fixPublic);
+
+  /* Labs */
+  app.use(SUB_PRODUCTS, ApiProduct.area, fixPublic);
+  app.use(SUB_PRODUCTS, ApiProduct.oddNumber, fixPublic);
 };
 
 module.exports = ApiManagerRouter;

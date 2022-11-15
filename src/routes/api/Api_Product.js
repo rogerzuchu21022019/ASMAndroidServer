@@ -6,6 +6,8 @@ const add = require("./products/AddProduct");
 const findAll = require("./products/FindAllProduct");
 const findByID = require("./products/FindByID");
 const search = require("./products/Search");
+const area = require("./products/lab/Area");
+const oddNumber = require("./products/lab/OddNumber");
 
 module.exports = {
   home,
@@ -16,4 +18,6 @@ module.exports = {
   findAll,
   findByID,
   search,
+  area,
+  oddNumber
 };

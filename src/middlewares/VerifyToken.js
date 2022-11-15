@@ -17,6 +17,8 @@ const VerifyTokenMiddleware = asyncHandler((req, res, next) => {
   JWT.verify(token, ACCESS_TOKEN_KEY, callbackToken);
 });
 
+
+
 const verifyToken = async (req, res, next) => {
   try {
     if (req.headers[`x-token`]) {
