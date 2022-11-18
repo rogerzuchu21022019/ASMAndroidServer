@@ -3,4 +3,5 @@ module.exports = {
     findCategories: require("./category/FindCategories"),
     findCategory: require("./category/FindCategory"),
     deleteCategory: require("./category/DeleteCategory"),
+    updateCategory: require("./category/UpdateCategory"),
 }

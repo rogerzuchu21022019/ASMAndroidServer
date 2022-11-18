@@ -5,11 +5,11 @@ const News = require("../../../components/news/models/News");
 const router = express.Router();
 router.post(`/add-news`, async (req, res, next) => {
   try {
-    const { newsID, categoryID } = req.body;
+    const { news, categoryID } = req.body;
 
 
     
-    const data = await addNewsController(newsID, categoryID);
+    const data = await addNewsController(news, categoryID);
     data
       ? res.json({
           status: "Success",

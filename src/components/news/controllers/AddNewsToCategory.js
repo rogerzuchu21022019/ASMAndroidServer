@@ -1,9 +1,9 @@
 const addNewsService = require("../services/AddNewsToCategory");
 
-const AddNewsController = async (newsID, categoryID) => {
+const AddNewsController = async (news, categoryID) => {
   try {
-    const news = await addNewsService(newsID, categoryID);
-    return news;
+    const newsData = await addNewsService(news, categoryID);
+    return newsData;
   } catch (error) {
     console.log(`Error in AddNewsController: ${error}`);
   }

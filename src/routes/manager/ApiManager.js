@@ -42,12 +42,14 @@ const ApiManager = (app, fixPublic) => {
   app.use(SUB_CATEGORY, ApiCategory.createCategory, fixPublic);
   app.use(SUB_CATEGORY, ApiCategory.findCategories, fixPublic);
   app.use(SUB_CATEGORY, ApiCategory.findCategory, fixPublic);
+  app.use(SUB_CATEGORY, ApiCategory.updateCategory, fixPublic);
   app.use(SUB_CATEGORY, ApiCategory.deleteCategory, fixPublic);
+
   /* News */
-  app.use(SUB_NEWS, ApiNews.createNews, fixPublic);
-  app.use(SUB_NEWS, ApiNews.findNewsInCategory, fixPublic);
   app.use(SUB_NEWS, ApiNews.addNewsToCategory, fixPublic);
+  app.use(SUB_NEWS, ApiNews.findNewsInCategory, fixPublic);
   app.use(SUB_NEWS, ApiNews.findNewsList, fixPublic);
+  app.use(SUB_NEWS, ApiNews.updateNews, fixPublic);
   app.use(SUB_NEWS, ApiNews.deleteNews, fixPublic);
 
   /* Labs */

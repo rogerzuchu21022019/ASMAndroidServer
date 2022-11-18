@@ -10,7 +10,7 @@ router.get(`/:categoryID/news-list`, async (req, res, next) => {
        totalItem: data.totalDocs,
        totalPage: data.totalPages,
        currentPage: data.page,
-       newsList: data.docs,
+       newsListInCategory: data.docs,
      };
     data
       ? res.json({
