@@ -1,9 +1,7 @@
-const loginRouter = require("./users/auth/Login");
-const registerRouter = require("./users/Register.js");
-const logoutRouter = require("./users/auth/Logout");
 
 module.exports = {
-  loginRouter,
-  logoutRouter,
-  registerRouter,
+  login : require("./users/auth/Login"),
+  register :require("./users/register/Register"),
+  logout : require("./users/auth/Logout"),
+  update: require(`./users/info/Update`)
 };

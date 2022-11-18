@@ -2,7 +2,7 @@
 // const findAllController = require("../../../components/products/controller/FindAllProducts");
 // const router = express.Router();
 // const Redis = require(`ioredis`);
-// const VerifyTokenMiddleware = require("../../../middlewares/VerifyToken");
+// const UserAuthMid = require("../../../middlewares/VerifyToken");
 // const VerifyToken = require("../../../middlewares/VerifyToken");
 // require("dotenv").config();
 // const redis = new Redis({

@@ -1,6 +1,6 @@
 const mongoose = require(`mongoose`);
 const mongoosePaginate = require(`mongoose-paginate-v2`);
-const { userConnection } = require("../../utils/server/MultiConnection");
+const { userConnection } = require("../../../utils/server/MultiConnection");
 
 const Product = new mongoose.Schema(
   {

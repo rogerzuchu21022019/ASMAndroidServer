@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const mongoosePaginate = require(`mongoose-paginate-v2`);
 const bcrypt = require(`bcrypt`);
-const { userConnection } = require("../../utils/server/MultiConnection");
+const { userConnection } = require("../../../utils/server/MultiConnection");
 
 const UserSchema = new mongoose.Schema(
   {
@@ -70,7 +70,11 @@ const UserSchema = new mongoose.Schema(
       default: Date.now,
     },
   },
-  { collection: "User Collection", timestamps: true, typeKey: "type" }
+  {
+    collection: "User Collection",
+    timestamps: true,
+    typeKey: "type",
+  }
 );
 
 UserSchema.pre(`save`, async function (next) {

@@ -1,6 +1,6 @@
 // const express = require("express");
 // const FindByIDController = require("../../../components/products/controller/FindByID");
-// const VerifyTokenMiddleware = require("../../../middlewares/VerifyToken");
+// const UserAuthMid = require("../../../middlewares/VerifyToken");
 // const router = express.Router();
 // require("dotenv").config();
 // const Redis = require(`ioredis`);
@@ -10,7 +10,7 @@
 //   host: process.env.HOST_REDIS,
 // });
 
-// router.get("/:productID", VerifyTokenMiddleware, async (req, res) => {
+// router.get("/:productID", UserAuthMid, async (req, res) => {
 //   try {
 //     const { productID } = req.params;
 //     let cacheRedis = await redis.get(`${productID}`);

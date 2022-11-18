@@ -1,4 +1,4 @@
-const ProductModel = require("../Product.Model");
+const ProductModel = require("../models/Product.Model");
 
 const FindAllService = async () => {
   try {
@@ -8,9 +8,11 @@ const FindAllService = async () => {
       limit: 10,
     };
     const rep = await ProductModel.paginate(query, options);
-    console.log("🚀 ~ file: FindAllProducts.js ~ line 14 ~ FindAllService ~ rep", rep)
-    return rep
-    
+    console.log(
+      "🚀 ~ file: FindAllProducts.js ~ line 14 ~ FindAllService ~ rep",
+      rep
+    );
+    return rep;
   } catch (error) {
     console.log(`erorr handler FindAllService`, error);
   }

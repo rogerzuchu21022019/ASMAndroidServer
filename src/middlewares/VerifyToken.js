@@ -1,9 +1,18 @@
 const JWT = require(`jsonwebtoken`);
 const asyncHandler = require(`express-async-handler`);
 const createError = require(`http-errors`);
-const { ACCESS_TOKEN_KEY } = require("../utils/server/GenerateKey");
+require(`dotenv`).config();
+const {
+  ACCESS_TOKEN_KEY,
+  REFRESH_TOKEN_KEY,
+} = require("../utils/server/GenerateKey");
+const Redis = require(`ioredis`);
+const redis = new Redis({
+  port: 6379,
+  host: "127.0.0.1",
+});
 
-const VerifyTokenMiddleware = asyncHandler((req, res, next) => {
+const UserAuthMid = asyncHandler((req, res, next) => {
   // verify token middleware bearer
   if (!req.headers.authorization) {
     return next(createError(401, `Unauthorized`));
@@ -11,36 +20,28 @@ const VerifyTokenMiddleware = asyncHandler((req, res, next) => {
   const authHeader = req.headers.authorization;
   const bearer = authHeader.split(` `);
   const token = bearer[1];
-  const callbackToken = (error, payload) => {
-    (req.payload = payload), next();
+  const callbackToken = (error, user) => {
+    (req.user = user), next();
   };
 
   JWT.verify(token, ACCESS_TOKEN_KEY, callbackToken);
 });
 
-
-
-const verifyToken = async (req, res, next) => {
-  try {
-    if (req.headers[`x-token`]) {
-      const token = req.headers[`x-token`];
+const UserAuthRefreshMid = (refreshToken) => {
+  return new Promise((resolve, reject) => {
+    JWT.verify(refreshToken, REFRESH_TOKEN_KEY, (error, user) => {
+      if (error) reject(error);
+      let REFRESH_TOKEN = process.env.REFRESH_TOKEN_REDIS;
+      REFRESH_TOKEN = `${REFRESH_TOKEN}_${user.userID}`;
+      const redisCLient = redis
+        .get(REFRESH_TOKEN)
+        .then(resolve(user))
+        .catch((err) => reject(err));
       console.log(
-        "🚀 ~ file: VerifyToken.js ~ line 24 ~ verifyToken ~ token",
-        token
+        "🚀 ~ file: VerifyToken.js ~ line 39 ~ JWT.verify ~ redisCLient",
+        redisCLient
       );
-      const payload = await JWT.verify(token, ACCESS_TOKEN_KEY);
-      req.payload = payload;
-      next();
-    }
-    return res.status(200).json({
-      status: 401,
-      message: "jwt expired",
     });
-  } catch (error) {
-    return res.status(200).json({
-      status: 401,
-      message: "jwt expired",
-    });
-  }
+  });
 };
-module.exports = [VerifyTokenMiddleware, verifyToken];
+module.exports = [UserAuthMid, UserAuthRefreshMid];

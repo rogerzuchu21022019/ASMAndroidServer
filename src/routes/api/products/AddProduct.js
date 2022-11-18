@@ -1,6 +1,6 @@
 const express = require("express");
 const AddController = require("../../../components/products/controller/AddProduct");
-const VerifyTokenMiddleware = require("../../../middlewares/VerifyToken");
+const UserAuthMid = require("../../../middlewares/VerifyToken");
 const router = express.Router();
 require("dotenv").config();
 
@@ -10,7 +10,7 @@ const redis = new Redis({
   host: process.env.HOST_REDIS,
 });
 
-router.post(`/add-product`, VerifyTokenMiddleware, async (req, res) => {
+router.post(`/add-product`, UserAuthMid, async (req, res) => {
   try {
     const { product } = req.body;
 

@@ -1,6 +1,6 @@
 const express = require("express");
 const FindByIDController = require("../../../components/products/controller/FindByID");
-const VerifyTokenMiddleware = require("../../../middlewares/VerifyToken");
+const UserAuthMid = require("../../../middlewares/VerifyToken");
 const router = express.Router();
 require("dotenv").config();
 const Redis = require(`ioredis`);
@@ -10,7 +10,7 @@ const redis = new Redis({
   host: process.env.HOST_REDIS,
 });
 
-router.get("/:productID", VerifyTokenMiddleware, async (req, res) => {
+router.get("/:productID", UserAuthMid, async (req, res) => {
   try {
     const { productID } = req.params;
     let cacheRedis = await redis.get(`${productID}`);
@@ -27,8 +27,15 @@ router.get("/:productID", VerifyTokenMiddleware, async (req, res) => {
       });
     } else {
       const data = await FindByIDController(productID);
-      console.log(`Redis miss, get data from mongodb and set to Redis :>>>>>>>>>>>>>>>`);
-      await redis.set(`${productID}`, JSON.stringify(data), RedisHelper.EXPIRED_KEYWORD,RedisHelper.EXPIRED_TIME );
+      console.log(
+        `Redis miss, get data from mongodb and set to Redis :>>>>>>>>>>>>>>>`
+      );
+      await redis.set(
+        `${productID}`,
+        JSON.stringify(data),
+        RedisHelper.EXPIRED_KEYWORD,
+        RedisHelper.EXPIRED_TIME
+      );
       data
         ? res.status(200).json({
             status: "Success",

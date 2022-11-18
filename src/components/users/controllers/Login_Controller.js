@@ -1,4 +1,4 @@
-const LoginService = require("../user_service/Login_Service");
+const LoginService = require("../services/Login_Service");
 const bcrypt = require(`bcrypt`);
 const createError = require(`http-errors`);
 const { signToken, signRefreshToken } = require("../../../utils/server/Jwt");

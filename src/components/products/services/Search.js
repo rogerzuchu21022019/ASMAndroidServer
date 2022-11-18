@@ -1,6 +1,6 @@
-const ProductModel = require("../Product.Model");
+const ProductModel = require("../models/Product.Model");
 
-const SearchService = async (name,brand,description,specials) => {
+const SearchService = async (name, brand, description, specials) => {
   try {
     const query = {
       $or: [

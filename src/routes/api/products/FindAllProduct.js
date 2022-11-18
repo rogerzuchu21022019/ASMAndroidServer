@@ -2,7 +2,7 @@ const express = require("express");
 const findAllController = require("../../../components/products/controller/FindAllProducts");
 const router = express.Router();
 const Redis = require(`ioredis`);
-const VerifyTokenMiddleware = require("../../../middlewares/VerifyToken");
+const UserAuthMid = require("../../../middlewares/VerifyToken");
 const VerifyToken = require("../../../middlewares/VerifyToken");
 require("dotenv").config();
 const redis = new Redis({
@@ -10,9 +10,8 @@ const redis = new Redis({
   host: process.env.HOST_REDIS,
 });
 
-router.get(`/`,VerifyToken, async (req, res) => {
+router.get(`/`, VerifyToken, async (req, res) => {
   try {
-
     let cacheRedis = await redis.get(`products`);
     if (cacheRedis) {
       console.log(`Redis hit, get data from storage =>>>>>>>>>>>>>>>>`);
@@ -26,7 +25,10 @@ router.get(`/`,VerifyToken, async (req, res) => {
       });
     } else {
       const data = await findAllController();
-      console.log("🚀 ~ file: FindAllProduct.js ~ line 28 ~ router.get ~ data", data)
+      console.log(
+        "🚀 ~ file: FindAllProduct.js ~ line 28 ~ router.get ~ data",
+        data
+      );
       const paginate = {
         totalItem: data.totalDocs,
         totalPage: data.totalPages,

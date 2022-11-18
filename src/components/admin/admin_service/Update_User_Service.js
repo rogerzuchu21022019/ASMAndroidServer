@@ -1,7 +1,7 @@
-const User_Model = require("../../users/User_Model");
+const User_Model = require("../../users/models/User_Model");
 
 const UpdateUserSerive = async (name, phone, address, imageUrl, dob, id) => {
-  const query = id
+  const query = id;
   const updateOption = {
     name: name,
     phone: phone,
@@ -17,8 +17,8 @@ const UpdateUserSerive = async (name, phone, address, imageUrl, dob, id) => {
     query,
     updateOption,
     conditionUpdate
-  )
-  
+  );
+
   return response;
 };
 module.exports = UpdateUserSerive;

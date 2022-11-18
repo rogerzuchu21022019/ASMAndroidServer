@@ -7,7 +7,6 @@ router.delete(`/delete-user/:id`, async (req, res, next) => {
     const id = req.params.id;
     console.log("🚀 ~ file: DeleteUser.js ~ line 9 ~ asyncHandler ~ id", id);
     const result = await deleteUserController(id);
-    console.log("🚀 ~ file: DeleteUser.js ~ line 10 ~ router.delete ~ result", result)
     
     return res.status(200).json({
       message: "Delete Successfully",

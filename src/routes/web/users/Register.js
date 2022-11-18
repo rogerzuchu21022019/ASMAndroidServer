@@ -1,6 +1,5 @@
 var express = require("express");
-const registerController = require("../../../components/users/user_controller/Register_Controller");
-
+const registerController = require("../../../components/users/controllers/Register_Controller");
 
 var router = express.Router();
 const navigation = require(`../../../utils/client-web/Navigation`);
@@ -30,16 +29,16 @@ router.post("/register", async (req, res, next) => {
       imageUrl,
       role
     );
-     res.status(200).json({
+    res.status(200).json({
       message: " Register Success",
       error: false,
-      isRegisted:false,
-      data: data
+      isRegisted: false,
+      data: data,
     });
   } catch (error) {
     res.status(400).json({
       error: true,
-      isRegisted:true,
+      isRegisted: true,
       message: error.message,
     });
   }

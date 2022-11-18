@@ -2,8 +2,8 @@
 // const router = express.Router();
 // const createError = require("http-errors");
 // const SearchController = require("../../../components/products/controller/Search");
-// const VerifyTokenMiddleware = require("../../../middlewares/VerifyToken");
-// router.post(`/search`,VerifyTokenMiddleware, async (req, res,next) => {
+// const UserAuthMid = require("../../../middlewares/VerifyToken");
+// router.post(`/search`,UserAuthMid, async (req, res,next) => {
 //     try {
 //         const { name, brand, description, specials } = req.query;
 //         const data = await SearchController(name, brand, description, specials);
@@ -24,7 +24,7 @@
 //             });
 
 //     } catch (error) {
-        
+
 //     }
 // })
 // module.exports = router;

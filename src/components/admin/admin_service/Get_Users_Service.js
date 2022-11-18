@@ -1,4 +1,4 @@
-const User_Model = require("../../users/User_Model");
+const User_Model = require("../../users/models/User_Model");
 
 const Get_Users_Service = async () => {
   /*  Query sort list reverse in mongodb  */

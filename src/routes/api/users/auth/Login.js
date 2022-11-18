@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 const navigation = require(`../../../../utils/client-web/Navigation`);
 const asyncHandler = require("express-async-handler");
-const LoginController = require("../../../../components/users/user_controller/Login_Controller");
+const LoginController = require("../../../../components/users/controllers/Login_Controller");
 router.post("/auth-login", async (req, res, next) => {
   try {
     const { email, password } = req.body;

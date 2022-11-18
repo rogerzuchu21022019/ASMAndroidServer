@@ -1,4 +1,4 @@
-const ProductModel = require("../Product.Model");
+const ProductModel = require("../models/Product.Model");
 
 const FindByIDService = async (productID) => {
   try {

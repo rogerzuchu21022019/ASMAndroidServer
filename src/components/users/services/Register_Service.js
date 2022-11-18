@@ -1,4 +1,4 @@
-const UserModel = require("../User_Model");
+const UserModel = require("../models/User_Model");
 
 const createError = require(`http-errors`);
 const RegisterService = async (
@@ -26,9 +26,6 @@ const RegisterService = async (
   await UserModel.findOne({
     email,
   })
-    .then((err, data) => console.log("data pending", data))
-    .then((err, data) => console.log("data Fulfilled", data))
-    .catch();
   // console.log(`isExistahihihihihi`, isExist);
   return user;
 };

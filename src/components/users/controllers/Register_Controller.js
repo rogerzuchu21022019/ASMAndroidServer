@@ -1,4 +1,4 @@
-const registerService = require("../user_service/Register_Service");
+const registerService = require("../services/Register_Service");
 
 const RegisterController = async (
   name,
