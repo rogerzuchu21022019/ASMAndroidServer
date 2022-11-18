@@ -2,16 +2,19 @@
 const ApiUser = require("../api/Api_User");
 const ApiProduct = require(`../api/Api_Product`);
 const ApiAdmin = require(`../api/Api_Admin`);
-const ApiNews = require("../api/Api_News");
+const ApiCategory = require(`../api/Api_Category`);
+const ApiNews = require(`../api/Api_News`);
 
 const ApiManager = (app, fixPublic) => {
   const MAIN = "/api";
   const USERS = "users";
   const NEWS = "news";
+  const CATEGORY = "category";
   const PRODUCTS = "products";
   const SUB_USERS = `${MAIN}/${USERS}`;
   const SUB_PRODUCTS = `${MAIN}/${PRODUCTS}`;
   const SUB_NEWS = `${MAIN}/${NEWS}`;
+  const SUB_CATEGORY = `${MAIN}/${CATEGORY}`;
   /* Admin */
 
   app.use(MAIN, ApiAdmin.getUsers, fixPublic);
@@ -23,7 +26,6 @@ const ApiManager = (app, fixPublic) => {
   app.use(MAIN, ApiUser.login, fixPublic);
   app.use(MAIN, ApiUser.logout, fixPublic);
   app.use(SUB_USERS, ApiUser.register, fixPublic);
-  app.use(SUB_USERS, ApiUser.update, fixPublic);
 
   /* Products */
   app.use(MAIN, ApiProduct.home, fixPublic);
@@ -36,17 +38,17 @@ const ApiManager = (app, fixPublic) => {
   app.use(SUB_PRODUCTS, ApiProduct.findByID, fixPublic);
   app.use(SUB_PRODUCTS, ApiProduct.search, fixPublic);
 
-  /* News */
-  app.use(SUB_NEWS, ApiNews.addNews, fixPublic);
-  app.use(SUB_NEWS, ApiNews.newsList, fixPublic);
-  app.use(SUB_NEWS, ApiNews.newsDetail, fixPublic);
-  app.use(SUB_NEWS, ApiNews.deleteNews, fixPublic);
-  app.use(SUB_NEWS, ApiNews.searchNews, fixPublic);
-  app.use(SUB_NEWS, ApiNews.media, fixPublic);
-
   /* Category */
-  app.use(SUB_NEWS, ApiNews.insertCategory, fixPublic);
-  app.use(SUB_NEWS, ApiNews.categories, fixPublic);
+  app.use(SUB_CATEGORY, ApiCategory.createCategory, fixPublic);
+  app.use(SUB_CATEGORY, ApiCategory.findCategories, fixPublic);
+  app.use(SUB_CATEGORY, ApiCategory.findCategory, fixPublic);
+  app.use(SUB_CATEGORY, ApiCategory.deleteCategory, fixPublic);
+  /* News */
+  app.use(SUB_NEWS, ApiNews.createNews, fixPublic);
+  app.use(SUB_NEWS, ApiNews.findNewsInCategory, fixPublic);
+  app.use(SUB_NEWS, ApiNews.addNewsToCategory, fixPublic);
+  app.use(SUB_NEWS, ApiNews.findNewsList, fixPublic);
+  app.use(SUB_NEWS, ApiNews.deleteNews, fixPublic);
 
   /* Labs */
   app.use(SUB_PRODUCTS, ApiProduct.area, fixPublic);

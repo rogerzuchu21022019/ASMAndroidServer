@@ -1,10 +1,11 @@
 const express = require("express");
-const findNewsListController = require("../../../components/news/controllers/FindNewsList");
+const findNewsController = require("../../../components/news/controllers/FindNewsInCategory");
 
 const router = express.Router();
-router.get(`/`, async (req, res, next) => {
+router.get(`/:categoryID/news-list`, async (req, res, next) => {
   try {
-    const data = await findNewsListController();
+    const {categoryID} = req.params;
+    const data = await findNewsController(categoryID);
      const paginate = {
        totalItem: data.totalDocs,
        totalPage: data.totalPages,

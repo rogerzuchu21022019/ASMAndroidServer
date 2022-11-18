@@ -1,9 +1,9 @@
 const News = require("../models/News");
 
 
-const FindNewsListService = async () => {
+const FindNewsService = async (categoryID) => {
   try {
-    const query = { };
+    const query = { category: categoryID };
 
     const optionsPaginate = {
       litmit: 10,
@@ -16,4 +16,4 @@ const FindNewsListService = async () => {
   }
 };
 
-module.exports = FindNewsListService;
+module.exports = FindNewsService;

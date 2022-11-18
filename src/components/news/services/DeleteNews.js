@@ -1,15 +1,11 @@
 const News = require("../models/News");
 
-const DeleteNewsService = async (id) => {
+const DeleteServices = async (id) => {
   try {
-    const query = { _id: id };
-    const optionsDelete = {
-      upsert: true,
-      new: true,
-    };
-    return await News.findByIdAndDelete(query, optionsDelete);
+    const data = await News.findByIdAndDelete(id);
+    return data;
   } catch (error) {
-    console.log(`error handler DELETE NEWS: ${error}`);
+    console.log(`Error handler DeleteServices: ${error}`);
   }
 };
-module.exports = DeleteNewsService;
+module.exports = DeleteServices;

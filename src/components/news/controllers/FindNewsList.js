@@ -1,11 +1,13 @@
 const findNewsListService = require("../services/FindNewsList");
 
+
 const FindNewsListController = async () => {
   try {
-    const newsList = await findNewsListService()
-    return newsList
+    const data = await findNewsListService();
+    return data;
   } catch (error) {
-    console.log(`error handler FIND NEWS LIST: ${error}`);
+    console.log(`Error handler CreateCategory: ${error}`);
   }
-}
+};
+
 module.exports = FindNewsListController;

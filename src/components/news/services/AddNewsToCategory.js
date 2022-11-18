@@ -1,33 +1,20 @@
-const NewsModel = require("../models/News");
-const createError = require(`http-errors`);
+const News = require("../models/News");
 
-const AddNewsService = async (news) => {
+const AddNewsService = async (newsID, categoryID) => {
   try {
-    // const query = {
-    //   _id:news._id
-    // };
-    // console.log("🚀 ~ file: AddNews.js ~ line 9 ~ AddNewsService ~ query", query)
-    // const optionsUpdate = {
-    //   upsert: true,
-    //   new: true,
-    // };
-    // const news1 = await NewsModel.findByIdAndUpdate(
-    //   query,
-    //   {
-    //     $set: {
-    //       title: news.title,
-    //       description: news.description,
-    //       imageUrl: news.imageUrl,
-    //       categories: news.categories,
-    //     },
-    //   },
-    //   optionsUpdate
-    // );
-    const news1 = await NewsModel.create(news);
-    console.log("🚀 ~ file: AddNews.js ~ line 6 ~ AddNewsService ~ news", news1);
-    news1 ? news1 : createError(401);
-    return news1;
-  } catch (error) {}
+    const query = { _id: newsID };
+    const updateValue = { category: categoryID };
+    console.log("🚀 ~ file: AddNewsToCategory.js ~ line 7 ~ AddNewsService ~ newsID", newsID)
+    console.log("🚀 ~ file: AddNewsToCategory.js ~ line 8 ~ AddNewsService ~ categoryID", categoryID)
+    const optionUpdate = {
+      new: true,
+      runValidators: true,
+      upsert: true,
+    };
+    const news = await News.findByIdAndUpdate(query, updateValue, optionUpdate);
+    return news;
+  } catch (error) {
+    console.log(`Error in AddNewsService: ${error}`);
+  }
 };
-
 module.exports = AddNewsService;

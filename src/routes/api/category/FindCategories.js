@@ -1,31 +1,30 @@
-const express = require(`express`);
-const findCategoriesController = require(`../../../components/category/controllers/FindCategories`);
-const router = express.Router();
+const express = require("express");
+const findCategoriesController = require("../../../components/category/controllers/FindCategories");
 
+const router = express.Router();
 router.get(`/categories`, async (req, res, next) => {
   try {
     const data = await findCategoriesController();
     const paginate = {
-      page: data.page,
-      limit: data.limit,
-      totalDocs: data.totalDocs,
-      totalPages: data.totalPages,
-      categories : data.docs
+      totalItem: data.totalDocs,
+      totalPage: data.totalPages,
+      currentPage: data.page,
+      categories: data.docs,
     };
     data
-      ? res.status(200).json({
+      ? res.json({
+          status: "Success",
+          message: "Get Categories successfully",
           error: false,
-          status: "Suscess",
-          isLoadings: false,
-          message: "Load Categories Successfully",
+          isLoading: false,
           data: paginate,
         })
-      : res.status(404).json({
-          error: true,
+      : res.json({
           status: "Fail",
-          isLoadings: false,
-          message: "Load Categories Failed",
-          data: {},
+          message: "Get Categories fail",
+          error: true,
+          isLoading: true,
+          data: null,
         });
   } catch (error) {
     next(error);

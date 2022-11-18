@@ -2,15 +2,16 @@ const Category = require("../models/Category");
 
 const FindCategoriesService = async () => {
   try {
-    const query = {};
-    const optionPaginate = {
+    const query = { };
+    const optionsPaginate = {
+      litmit: 10,
       page: 1,
-      limit: 10,
     };
-    const categories = await Category.paginate(query, optionPaginate);
-    return categories;
+    const data = await Category.paginate(query, optionsPaginate);
+    return data;
   } catch (error) {
-    console.log(`error handler FindCategoriesServices: ${error}`);
+    console.log(`Error handler CreateCategory: ${error}`);
   }
 };
+
 module.exports = FindCategoriesService;

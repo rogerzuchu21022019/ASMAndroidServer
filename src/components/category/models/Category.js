@@ -1,27 +1,28 @@
-const mongoose = require(`mongoose`);
-const mongoosePaginate = require(`mongoose-paginate-v2`);
-
+const mongoose = require("mongoose");
+const mongoosePaginate = require("mongoose-paginate-v2");
 const { userConnection } = require("../../../utils/server/MultiConnection");
+const News = require("../../news/models/News");
 const Schema = mongoose.Schema;
-
+const ObjectID = Schema.Types.ObjectId;
+const options = {
+  timestamps: true,
+};
 const CategorySchema = new Schema(
   {
     name: {
       type: String,
       required: true,
-      trim: true,
-      default: "",
       unique: true,
     },
     description: {
       type: String,
       required: true,
-      trim: true,
     },
+    // emebeded newsList from News model
   },
-  { collection: "Category Collection", timestamps: true, typeKey: "type" }
+  options
 );
 
 CategorySchema.plugin(mongoosePaginate);
 
-module.exports = userConnection.model(`Category`, CategorySchema);
+module.exports = userConnection.model("Category", CategorySchema);
