@@ -1,9 +1,9 @@
 const express = require("express");
-const createCategoryController = require("../../../components/category/controllers/CreateCategory");
-const Category = require("../../../components/category/models/Category");
+const createCategoryController = require("../../../../components/category/controllers/CreateCategory");
+const Category = require("../../../../components/category/models/Category");
 
 const router = express.Router();
-router.post(`/create`, async (req, res, next) => {
+router.post(`/create-category`, async (req, res, next) => {
   try {
     const { category } = req.body;
     console.log("🚀 ~ file: CreateCategory.js ~ line 7 ~ router.post ~ category", category)

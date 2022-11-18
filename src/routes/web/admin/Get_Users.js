@@ -1,11 +1,11 @@
 var express = require("express");
-const get_User_By_Controller = require("../../../components/admin/admin_controller/Get_User_By_Controller");
+const findUserController = require("../../../components/admin/controllers/FindUser");
 var router = express.Router();
 
 /* GET users listing. */
 router.get("/get-users", async (req, res, next) => {
   try {
-    const result = await get_User_By_Controller();
+    const result = await findUserController();
     res.json({
       error: false,
       message: "Get Success",

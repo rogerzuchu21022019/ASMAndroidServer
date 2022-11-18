@@ -1,5 +1,5 @@
 const express = require("express");
-const findCategoriesController = require("../../../components/category/controllers/FindCategories");
+const findCategoriesController = require("../../../../components/category/controllers/FindCategories");
 
 const router = express.Router();
 router.get(`/categories`, async (req, res, next) => {

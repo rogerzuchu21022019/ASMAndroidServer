@@ -1,11 +1,11 @@
 const express = require(`express`);
-const get_User_By_Controller = require("../../../components/admin/admin_controller/Get_User_By_Controller");
+const findUser = require("../../../../components/admin/controllers/FindUser");
 const router = express.Router();
 router.get(`/get-user/:email`, async (req, res, next) => {
   try {
     const { email } = req.params;
 
-    const result = await get_User_By_Controller(email);
+    const result = await findUser(email);
 
     result
       ? res.status(200).json({
@@ -22,8 +22,6 @@ router.get(`/get-user/:email`, async (req, res, next) => {
           isLoading: true,
           data: {},
         });
-  } catch (error) {
-   
-  }
+  } catch (error) {}
 });
 module.exports = router;

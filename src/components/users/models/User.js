@@ -71,7 +71,6 @@ const UserSchema = new mongoose.Schema(
     },
   },
   {
-    collection: "User Collection",
     timestamps: true,
     typeKey: "type",
   }

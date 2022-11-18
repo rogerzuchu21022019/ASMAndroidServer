@@ -1,11 +1,11 @@
-const User_Model = require("../../users/models/User_Model");
+const User = require("../../users/models/User");
 
 const GetUserByService = async (email) => {
   const query = {
     email,
   };
 
-  const res = await User_Model.findOne(query);
+  const res = await User.findOne(query);
 
   return res;
 };

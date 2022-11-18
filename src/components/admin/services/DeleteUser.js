@@ -1,4 +1,4 @@
-const User_Model = require("../../users/models/User_Model");
+const User = require("../../users/models/User");
 
 const DeleteUserService = async (id) => {
   try {
@@ -10,11 +10,7 @@ const DeleteUserService = async (id) => {
     const callbackFun = (error) => {
       console.log(`error removing user`, error);
     };
-    return await User_Model.findByIdAndDelete(
-      query,
-      optionsRemove,
-      callbackFun
-    );
+    return await User.findByIdAndDelete(query, optionsRemove, callbackFun);
   } catch (error) {}
 };
 module.exports = DeleteUserService;

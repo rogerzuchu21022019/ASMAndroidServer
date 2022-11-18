@@ -1,6 +1,6 @@
 const express = require(`express`);
 const asyncHandle = require(`express-async-handler`);
-const UpdateUserController = require("../../../components/admin/admin_controller/Update_User_Controller");
+const updateUserController = require("../../../../components/admin/controllers/UpdateUser");
 const router = express.Router();
 router.put(
   `/update-user/:id`,
@@ -9,7 +9,7 @@ router.put(
     const { id } = req.params;
 
     try {
-      const data = await UpdateUserController(
+      const data = await updateUserController(
         name,
         phone,
         address,

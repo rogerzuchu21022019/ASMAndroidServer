@@ -1,8 +1,8 @@
 var express = require("express");
-const registerController = require("../../../components/users/controllers/Register_Controller");
+const registerController = require("../../../../components/users/controllers/Register");
 
 var router = express.Router();
-const navigation = require(`../../../utils/client-web/Navigation`);
+const navigation = require(`../../../../utils/client-web/Navigation`);
 
 /* GET users listing. */
 router.get("/register", (req, res, next) => {

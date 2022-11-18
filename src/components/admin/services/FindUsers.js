@@ -1,6 +1,6 @@
-const User_Model = require("../../users/models/User_Model");
+const User = require("../../users/models/User");
 
-const Get_Users_Service = async () => {
+const FindUserService = async () => {
   /*  Query sort list reverse in mongodb  */
   const query = {};
   const sortReverseArray = {
@@ -9,9 +9,9 @@ const Get_Users_Service = async () => {
     },
     select: `name email phone address imageUrl role createdAt updatedAt`,
   };
-  const res = await User_Model.find(query, {}, sortReverseArray);
+  const res = await User.find(query, {}, sortReverseArray);
   return res;
   //
 };
 
-module.exports = Get_Users_Service;
+module.exports = FindUserService;

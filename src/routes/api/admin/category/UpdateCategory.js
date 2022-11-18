@@ -1,8 +1,8 @@
 const express = require(`express`);
-const updateCategoryController = require(`../../../components/category/controllers/UpdateCategory`);
+const updateCategoryController = require(`../../../../components/category/controllers/UpdateCategory`);
 const router = express.Router();
 
-router.put(`/:id/update`, async (req, res, next) => {
+router.put(`/:id/update-category`, async (req, res, next) => {
   try {
     const { id } = req.params;
     const { category } = req.body;

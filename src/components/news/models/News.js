@@ -9,6 +9,11 @@ const options = {
 };
 const NewsSchema = new Schema(
   {
+    newsID: {
+      type: ObjectID,
+      required: true,
+      auto: true,
+    },
     title: {
       type: String,
       required: true,
@@ -21,6 +26,19 @@ const NewsSchema = new Schema(
       type: String,
       required: true,
     },
+    count: {
+      type: Number,
+      default: 0,
+    },
+    comments: [
+      {
+        commentID: { type: ObjectID, required: true, auto: true },
+        content: { type: String, required: true },
+        user: { type: ObjectID, ref: "User" },
+        createdAt: { type: Date, default: Date.now },
+        updatedAt: { type: Date, default: Date.now },
+      },
+    ],
     category: {
       type: ObjectID,
       ref: "Category ",

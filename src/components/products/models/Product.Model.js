@@ -35,7 +35,7 @@ const Product = new mongoose.Schema(
     specials: { type: Array, default: [] },
   },
 
-  { collection: "Product Collection", timestamps: true, typeKey: "type", toJSON: {
+  { timestamps: true, typeKey: "type", toJSON: {
         transform(doc, ret){
             delete ret.password;
             delete ret.__v;
@@ -43,11 +43,11 @@ const Product = new mongoose.Schema(
     } }
 );
 Product.plugin(mongoosePaginate);
-Product.method("toJSON", function () {
-  const { __v, _id, ...object } = this.toObject();
-  object.id = _id;
-  return object;
-});
+// Product.method("toJSON", function () {
+//   const { __v, _id, ...object } = this.toObject();
+//   object.id = _id;
+//   return object;
+// });
 
 //Export the model
 module.exports = userConnection.model("Product", Product);

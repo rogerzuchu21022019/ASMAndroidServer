@@ -1,4 +1,4 @@
-const updateUserSerive = require("../admin_service/Update_User_Service");
+const updateUserSerive = require("../services/UpdateUser");
 
 const UpdateUserController = async (
   name,

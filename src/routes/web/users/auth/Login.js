@@ -1,5 +1,5 @@
 var express = require("express");
-const LoginController = require("../../../../components/users/controllers/Login_Controller");
+const LoginController = require("../../../../components/users/controllers/Login");
 var router = express.Router();
 
 const navigation = require(`../../../../utils/client-web/Navigation`);

@@ -2,11 +2,26 @@ const News = require("../models/News");
 
 const AddNewsService = async (news, categoryID) => {
   try {
+
+    // const query1 = {newsID: news.newsID};
+    // const updateValue1  ={}
+    // const options1Update ={new: true, upsert: true}
+    // const dataNew = await News.findOneAndUpdate(
+    //   query1,
+    //   options1Update,
+    //   options1Update
+    // );
+    // console.log("🚀 ~ file: AddNewsToCategory.js ~ line 14 ~ AddNewsService ~ dataNew", dataNew)
+
+
+
+
+
+
+
     const data = await News.create(news)
     const query = { _id: data._id };
     const updateValue = { category: categoryID };
-    console.log("🚀 ~ file: AddNewsToCategory.js ~ line 8 ~ AddNewsService ~ data._id", data._id)
-    console.log("🚀 ~ file: AddNewsToCategory.js ~ line 8 ~ AddNewsService ~ categoryID", categoryID)
     const optionUpdate = {
       new: true,
       runValidators: true,

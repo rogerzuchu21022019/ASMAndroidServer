@@ -1,4 +1,4 @@
-const User_Model = require("../../users/models/User_Model");
+const User = require("../../users/models/User");
 
 const UpdateUserSerive = async (name, phone, address, imageUrl, dob, id) => {
   const query = id;
@@ -13,7 +13,7 @@ const UpdateUserSerive = async (name, phone, address, imageUrl, dob, id) => {
     upsert: true,
     new: true,
   };
-  const response = await User_Model.findByIdAndUpdate(
+  const response = await User.findByIdAndUpdate(
     query,
     updateOption,
     conditionUpdate

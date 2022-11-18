@@ -1,8 +1,8 @@
 const express = require("express");
-const findCategoryController = require("../../../components/category/controllers/FindCategory");
+const findCategoryController = require("../../../../components/category/controllers/FindCategory");
 
 const router = express.Router();
-router.get(`/:id`, async (req, res, next) => {
+router.get(`/:id/category`, async (req, res, next) => {
   try {
     const {id} = req.params;
     const data = await findCategoryController(id);

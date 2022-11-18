@@ -1,4 +1,4 @@
-const deleteUserService = require("../admin_service/Delete_User_Service");
+const deleteUserService = require("../services/DeleteUser");
 
 const DeleteUserController = async (id) => {
   try {

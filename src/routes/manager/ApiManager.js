@@ -21,6 +21,14 @@ const ApiManager = (app, fixPublic) => {
   app.use(MAIN, ApiAdmin.getUser, fixPublic);
   app.use(MAIN, ApiAdmin.updateUser, fixPublic);
   app.use(MAIN, ApiAdmin.deleteUser, fixPublic);
+
+  /* Category */
+  app.use(MAIN, ApiAdmin.createCategory, fixPublic);
+  app.use(MAIN, ApiAdmin.findCategories, fixPublic);
+  app.use(MAIN, ApiAdmin.findCategory, fixPublic);
+  app.use(MAIN, ApiAdmin.updateCategory, fixPublic);
+  app.use(MAIN, ApiAdmin.deleteCategory, fixPublic);
+
   /* Users */
 
   app.use(MAIN, ApiUser.login, fixPublic);
@@ -37,13 +45,6 @@ const ApiManager = (app, fixPublic) => {
   app.use(SUB_PRODUCTS, ApiProduct.findAll, fixPublic);
   app.use(SUB_PRODUCTS, ApiProduct.findByID, fixPublic);
   app.use(SUB_PRODUCTS, ApiProduct.search, fixPublic);
-
-  /* Category */
-  app.use(SUB_CATEGORY, ApiCategory.createCategory, fixPublic);
-  app.use(SUB_CATEGORY, ApiCategory.findCategories, fixPublic);
-  app.use(SUB_CATEGORY, ApiCategory.findCategory, fixPublic);
-  app.use(SUB_CATEGORY, ApiCategory.updateCategory, fixPublic);
-  app.use(SUB_CATEGORY, ApiCategory.deleteCategory, fixPublic);
 
   /* News */
   app.use(SUB_NEWS, ApiNews.addNewsToCategory, fixPublic);
