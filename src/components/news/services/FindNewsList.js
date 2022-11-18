@@ -1,9 +1,8 @@
-const News = require("../models/News");
-
+const News = require("../models/News").default;
 
 const FindNewsListService = async () => {
   try {
-    const query = { };
+    const query = {};
 
     const optionsPaginate = {
       litmit: 10,
@@ -14,7 +13,7 @@ const FindNewsListService = async () => {
     //     createdAt: -1,
     //   },
     // };
-    const data = await News.paginate(query, optionsPaginate, );
+    const data = await News.paginate(query, optionsPaginate);
     return data;
   } catch (error) {
     console.log(`Error handler CreateCategory: ${error}`);

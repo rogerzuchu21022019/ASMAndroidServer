@@ -1,8 +1,7 @@
-const News = require("../models/News");
+const News = require("../models/News").default;
 
 const AddNewsService = async (news, categoryID) => {
   try {
-
     // const query1 = {newsID: news.newsID};
     // const updateValue1  ={}
     // const options1Update ={new: true, upsert: true}
@@ -13,13 +12,7 @@ const AddNewsService = async (news, categoryID) => {
     // );
     // console.log("🚀 ~ file: AddNewsToCategory.js ~ line 14 ~ AddNewsService ~ dataNew", dataNew)
 
-
-
-
-
-
-
-    const data = await News.create(news)
+    const data = await News.create(news);
     const query = { _id: data._id };
     const updateValue = { category: categoryID };
     const optionUpdate = {

@@ -1,4 +1,4 @@
-const News = require("../../news/models/News");
+const News = require("../../news/models/News").default;
 const Category = require("../models/Category");
 
 const DeleteService = async (id) => {

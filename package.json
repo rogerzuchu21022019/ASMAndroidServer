@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/server",
-    "dev": "nodemon ./bin/server",
+    "dev": "nodemon --exec babel-node ./bin/server",
     "engines": {
       "node": "v18.12.1"
     }
@@ -33,6 +33,12 @@
     "redis": "^4.4.0"
   },
   "devDependencies": {
-    "@faker-js/faker": "^7.6.0"
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.2",
+    "@babel/node": "^7.20.2",
+    "@babel/plugin-proposal-export-default-from": "^7.18.10",
+    "@babel/preset-env": "^7.20.2",
+    "@faker-js/faker": "^7.6.0",
+    "babel-plugin-root-import": "^6.6.0"
   }
 }

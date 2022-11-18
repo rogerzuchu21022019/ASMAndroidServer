@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
-const mongoosePaginate = require("mongoose-paginate-v2");
-const { userConnection } = require("../../../utils/server/MultiConnection");
+import mongoose from "mongoose";
+import mongoosePaginate from "mongoose-paginate-v2";
+import { userConnection } from "~/utils/server/MultiConnection";
 const Schema = mongoose.Schema;
 const ObjectID = Schema.Types.ObjectId;
 
@@ -49,4 +49,4 @@ const NewsSchema = new Schema(
 
 NewsSchema.plugin(mongoosePaginate);
 
-module.exports = userConnection.model("News", NewsSchema);
+export default userConnection.model("News", NewsSchema);
