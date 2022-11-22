@@ -1,6 +1,6 @@
 
 module.exports = {
   login : require("./users/auth/Login"),
-  register :require("./users/register/Register"),
+  register :require("./users/register/Register").default,
   logout : require("./users/auth/Logout"),
 };

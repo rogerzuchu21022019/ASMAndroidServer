@@ -1,32 +1,20 @@
-const UserModel = require("../models/User");
+import UserModel from "../models/User";
 
-const createError = require(`http-errors`);
-const RegisterService = async (
-  name,
-  email,
-  phone,
-  password,
-  address,
-  imageUrl,
-  role
-) => {
-  const user = await UserModel.create({
-    name,
-    email,
-    phone,
-    password,
-    address,
-    imageUrl,
-    role,
-  });
+import createError from "http-errors";
 
-  if (!user) {
-    createError(401);
+const RegisterService = async (user) => {
+  try {
+    const query = { email: user.email };
+    const __user = await UserModel.findOne(query);
+    console.log(
+      "🚀 ~ file: Register.js ~ line 10 ~ RegisterService ~ __user",
+      __user
+    );
+
+    return __user;
+  } catch (error) {
+    console.log(`Error handler RegisterService: ${error}`);
+    throw error;
   }
-  await UserModel.findOne({
-    email,
-  });
-  // console.log(`isExistahihihihihi`, isExist);
-  return user;
 };
-module.exports = RegisterService;
+export default RegisterService;

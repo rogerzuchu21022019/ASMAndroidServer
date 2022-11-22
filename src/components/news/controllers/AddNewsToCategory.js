@@ -1,4 +1,4 @@
-const addNewsService = require("../services/AddNewsToCategory");
+import addNewsService from "../services/AddNewsToCategory";
 
 const AddNewsController = async (news, categoryID) => {
   try {
@@ -8,4 +8,4 @@ const AddNewsController = async (news, categoryID) => {
     console.log(`Error in AddNewsController: ${error}`);
   }
 };
-module.exports = AddNewsController;
+export default AddNewsController;

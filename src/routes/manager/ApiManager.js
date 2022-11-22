@@ -52,6 +52,13 @@ const ApiManager = (app, fixPublic) => {
   app.use(SUB_NEWS, ApiNews.findNewsList, fixPublic);
   app.use(SUB_NEWS, ApiNews.updateNews, fixPublic);
   app.use(SUB_NEWS, ApiNews.deleteNews, fixPublic);
+  app.use(SUB_NEWS, ApiNews.findNews, fixPublic);
+  app.use(SUB_NEWS, ApiNews.addComment, fixPublic);
+
+
+  /* News app.set replace for app.use  */
+  // app.set(SUB_NEWS, ApiNews.addNewsToCategory, fixPublic);
+  // app.set(SUB_NEWS, ApiNews.addComment, fixPublic);
 
   /* Labs */
   app.use(SUB_PRODUCTS, ApiProduct.area, fixPublic);

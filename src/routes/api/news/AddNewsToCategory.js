@@ -1,14 +1,11 @@
 const express = require("express");
-const addNewsController = require("../../../components/news/controllers/AddNewsToCategory");
-const News = require("../../../components/news/models/News");
+const addNewsController =
+  require("../../../components/news/controllers/AddNewsToCategory").default;
 
 const router = express.Router();
 router.post(`/add-news`, async (req, res, next) => {
   try {
     const { news, categoryID } = req.body;
-
-
-    
     const data = await addNewsController(news, categoryID);
     data
       ? res.json({
@@ -29,4 +26,4 @@ router.post(`/add-news`, async (req, res, next) => {
     next(error);
   }
 });
-module.exports = router;
+module.exports = router

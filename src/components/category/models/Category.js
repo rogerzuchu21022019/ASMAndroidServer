@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const mongoosePaginate = require("mongoose-paginate-v2");
 const { userConnection } = require("../../../utils/server/MultiConnection");
-const News = require("../../news/models/News");
 const Schema = mongoose.Schema;
 const ObjectID = Schema.Types.ObjectId;
 const options = {

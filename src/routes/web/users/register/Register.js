@@ -1,5 +1,5 @@
 var express = require("express");
-const registerController = require("../../../../components/users/controllers/Register");
+const registerController = require("../../../../components/users/controllers/Register").default;
 
 var router = express.Router();
 const navigation = require(`../../../../utils/client-web/Navigation`);
@@ -29,12 +29,7 @@ router.post("/register", async (req, res, next) => {
       imageUrl,
       role
     );
-    res.status(200).json({
-      message: " Register Success",
-      error: false,
-      isRegisted: false,
-      data: data,
-    });
+    data ? res.redirect("login") : res.redirect("register");
   } catch (error) {
     res.status(400).json({
       error: true,

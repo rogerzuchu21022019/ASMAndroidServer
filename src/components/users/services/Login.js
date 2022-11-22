@@ -1,18 +1,20 @@
 const User = require("../models/User");
-const bcrypt = require(`bcrypt`);
-const jwt = require(`jsonwebtoken`);
-const createError = require(`http-errors`);
+import createError from "http-errors";
 
-const LoginService = async (email, password) => {
+const LoginService = async (email) => {
   try {
-    const query = { email };
-    const user = await User.findOne(query);
+    const query = { email: email };
+    const user = await User.findOne(query)
+    console.log("🚀 ~ file: Login.js ~ line 8 ~ LoginService ~ email", email)
+
     if (!user) {
-      throw createError.NotFound(`User not found`);
+      throw createError(404, `User not found`);
     }
+    
     return user;
   } catch (error) {
-    console.log(`error handle :::::::::`, error);
+    console.log(`error handle ::::::::: catch`, error);
+    throw createError(404, `User not found`);
   }
 };
 

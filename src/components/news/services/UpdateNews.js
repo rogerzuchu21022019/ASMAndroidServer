@@ -1,5 +1,5 @@
-const News = require("../models/News");
-
+// import {News} from "../models/NewsModel";
+const News = require("../models/NewsModel");
 const UpdateServices = async (id, news) => {
   try {
     const query = { _id: id };
@@ -20,4 +20,4 @@ const UpdateServices = async (id, news) => {
     console.log(`Error handler UpdateServices: ${error}`);
   }
 };
-module.exports = UpdateServices;
+export default UpdateServices;

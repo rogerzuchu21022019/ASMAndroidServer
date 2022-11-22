@@ -1,4 +1,4 @@
-const findNewsService = require("../services/FindNewsInCategory");
+const findNewsService = require("../services/FindNewsInCategory").default;
 
 
 const FindNewsController = async (categoryID) => {

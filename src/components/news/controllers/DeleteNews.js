@@ -1,4 +1,4 @@
-const deleteServices = require("../services/DeleteNews");
+const deleteServices = require("../services/DeleteNews").default;
 
 
 const DeleteController = async (id) => {

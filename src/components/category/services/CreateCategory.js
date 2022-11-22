@@ -5,7 +5,7 @@ const CreateCategoryService = async (category) => {
     const data = await Category.create(category);
     return data;
   } catch (error) {
-    console.log(`Error handler CreateCategory: ${error}`);
+    console.log(`Error handler CreateCategoryService : ${error}`);
   }
 };
 module.exports = CreateCategoryService;

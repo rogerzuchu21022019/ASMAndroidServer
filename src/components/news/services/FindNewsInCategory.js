@@ -1,12 +1,12 @@
-const News = require("../models/News");
-
+// import {News} from "../models/NewsModel";
+const News = require("../models/NewsModel");
 
 const FindNewsService = async (categoryID) => {
   try {
     const query = { category: categoryID };
 
     const optionsPaginate = {
-      litmit: 10,
+      limit: 10,
       page: 1,
     };
     const data = await News.paginate(query, optionsPaginate);
@@ -16,4 +16,4 @@ const FindNewsService = async (categoryID) => {
   }
 };
 
-module.exports = FindNewsService;
+export default FindNewsService;

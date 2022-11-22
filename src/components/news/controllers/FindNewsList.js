@@ -1,4 +1,4 @@
-const findNewsListService = require("../services/FindNewsList");
+const findNewsListService = require("../services/FindNewsList").default;
 
 
 const FindNewsListController = async () => {

@@ -1,24 +1,24 @@
-const News = require("../models/News");
-
+// import {News} from "../models/NewsModel";
+const News = require("../models/NewsModel");
 
 const FindNewsListService = async () => {
   try {
     const query = { };
 
     const optionsPaginate = {
-      litmit: 10,
+      limit: 10,
       page: 1,
     };
-    // const sortReverseArray = {
-    //   sort: {
-    //     createdAt: -1,
-    //   },
-    // };
-    const data = await News.paginate(query, optionsPaginate, );
+    const sortReverseArray = {
+      sort: {
+        createdAt: -1,
+      },
+    };
+    const data = await News.paginate(query, optionsPaginate, sortReverseArray);
     return data;
   } catch (error) {
     console.log(`Error handler CreateCategory: ${error}`);
   }
 };
 
-module.exports = FindNewsListService;
+export default FindNewsListService;

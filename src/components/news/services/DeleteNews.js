@@ -1,5 +1,5 @@
-const News = require("../models/News");
-
+// import {News} from "../models/NewsModel";
+const News = require("../models/NewsModel");
 const DeleteServices = async (id) => {
   try {
     const data = await News.findByIdAndDelete(id);
@@ -8,4 +8,4 @@ const DeleteServices = async (id) => {
     console.log(`Error handler DeleteServices: ${error}`);
   }
 };
-module.exports = DeleteServices;
+export default DeleteServices;

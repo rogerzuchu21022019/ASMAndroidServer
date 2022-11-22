@@ -1,27 +1,35 @@
-const LoginService = require("../services/Login");
-const bcrypt = require(`bcrypt`);
-const createError = require(`http-errors`);
-const { signToken, signRefreshToken } = require("../../../utils/server/Jwt");
+const bcrypt = require('bcrypt');
+const createError = require("http-errors");
+const { signToken, signRefreshToken } = require('../../../utils/server/Jwt.js');
+const User = require('../models/User.js');
+const loginService = require("../services/Login");
+
 const LoginController = async (email, password) => {
   try {
-    const user = await LoginService(email, password);
-    console.log(
-      "🚀 ~ file: Login_Controller.js ~ line 8 ~ LoginController ~ user",
-      user
-    );
+    const query = { email: email };
 
-    const isValid = await bcrypt.compare(password, user.password);
+    const _user = await loginService(email);
 
-    if (!isValid) {
-      throw createError.Unauthorized(`Invalid password`);
-    }
-    const token = await signToken(user.id);
-    const refreshToken = await signRefreshToken(user.id);
+    const isValid = await bcrypt.compare(password, _user.password);
+    // if (!isValid) {
+    //   throw createError.Unauthorized(`Invalid password`);
+    // }
+
+    const token = await signToken(_user.id);
+    const refreshToken = await signRefreshToken(_user.id);
+    _user.accessToken = token;
+    _user.refreshToken = refreshToken;
+
+    const selectFields =
+      "_id email name dob imageUrl role phone address createdAt updatedAt";
+    const user = await User.findOne(query).select(selectFields);
+
     const data = {
       token,
-      refreshToken,
       user,
     };
+
+
     return data;
   } catch (error) {
     console.log(`error handle :::::::::`, error);

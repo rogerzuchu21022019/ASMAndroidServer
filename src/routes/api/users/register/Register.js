@@ -1,62 +1,26 @@
-var express = require("express");
-var router = express.Router();
-const bcrypt = require(`bcrypt`);
-const registerController = require("../../../../components/users/controllers/Register");
-const User = require("../../../../components/users/models/User");
-const navigation = require(`../../../../utils/client-web/Navigation`);
-
-/* GET users listing. */
-// router.get("/register", (req, res, next) => {
-//   res.render("register", {
-//     home: navigation.HOME,
-//     login: navigation.LOGIN,
-//     logout: navigation.LOGOUT,
-//     chart: navigation.CHART,
-//     register: navigation.REGISTER,
-//     analystic: navigation.ANALYSTIC,
-//     data_table: navigation.DATATABLE,
-//   });
-// });
+import { Router } from "express";
+var router = Router();
+import registerController from "../../../../components/users/controllers/Register";
+import User from "../../../../components/users/models/User.js";
 
 router.post("/register", async (req, res, next) => {
   try {
-    const { name, email, phone, password, address, imageUrl, role } = req.body;
-    const data = await registerController(
-      name,
-      email,
-      phone,
-      password,
-      address,
-      imageUrl,
-      role
-    );
-    data
-      ? res.status(200).json({
-          status: `Success`,
-          message: "Register Success",
-          error: false,
-          isRegisted: false,
-          data: {
-            id: data.id,
-            name: data.name,
-            email: data.email,
-            phone: data.phone,
-            address: data.address,
-            imageUrl: data.imageUrl,
-            dob: data.dob,
-            role: data.role,
-            createdAt: data.createdAt,
-            updatedAt: data.updatedAt,
-          },
-        })
-      : res.status(400).json({
-          status: `Fail`,
-          message: `Register Fail`,
-          error: true,
-          isRegisted: true,
-        });
+    const { user } = req.body;
+    const data = await registerController(user);
+    return res.status(200).json({
+      status: `Success`,
+      message: "Register Success",
+      error: false,
+      isRegister: false,
+      data: data,
+    });
   } catch (error) {
-    // next(error);
+    res.status(409).json({
+      status: `Fail`,
+      message: `${error.message}`,
+      error: true,
+      isRegister: true,
+    });
   }
 });
 
@@ -68,7 +32,7 @@ router.post("/insert-users", async (req, res, next) => {
       users
     );
   } catch (error) {
-    // next(error);
+    next(error);
   }
 });
 
@@ -90,7 +54,7 @@ router.post("/insert-users", async (req, res, next) => {
 //   } catch (error) {}
 // });
 
-module.exports = router;
+export default router;
 
 const usersFake = [
   {
