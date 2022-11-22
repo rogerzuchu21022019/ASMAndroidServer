@@ -1,5 +1,5 @@
 var express = require("express");
-const findUserController = require("../../../components/admin/controllers/FindUser");
+const findUserController = require("../../../../components/admin/controllers/FindUser");
 var router = express.Router();
 
 /* GET users listing. */

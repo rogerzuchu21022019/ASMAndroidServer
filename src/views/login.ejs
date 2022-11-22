@@ -104,7 +104,7 @@
 							<div class="login-title">
 								<h2 class="text-center text-primary">Login To DeskApp</h2>
 							</div>
-							<form>
+							<form method="post" action="<%= login %> ">
 								<div class="select-role">
 									<div class="btn-group btn-group-toggle" data-toggle="buttons">
 										<label class="btn active">
@@ -138,8 +138,8 @@
 										type="text"
 										required
 										class="form-control form-control-lg"
-										placeholder="Username"
-										value="<%= user ? user.trim() : '' %> "
+										placeholder="Email"
+										name="email"
 									/>
 									<div class="input-group-append custom">
 										<span class="input-group-text"
@@ -150,6 +150,7 @@
 								<div class="input-group custom">
 									<input
 										type="password"
+										name="password"
 										class="form-control form-control-lg"
 										placeholder="**********"
 									/>
@@ -185,11 +186,7 @@
 											use code for form submit
 											<input class="btn btn-primary btn-lg btn-block" type="submit" value="Sign In">
 										-->
-											<a
-												class="btn btn-primary btn-lg btn-block"
-												href="/<%= home %> "
-												>Sign In</a
-											>
+											<button type="submit" class="btn btn-primary btn-lg btn-block">Sign In</button>
 										</div>
 										<div
 											class="font-16 weight-600 pt-10 pb-10 text-center"

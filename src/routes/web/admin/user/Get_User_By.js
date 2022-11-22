@@ -1,5 +1,5 @@
 const express = require(`express`);
-const findUserController = require("../../../components/admin/controllers/FindUser");
+const findUserController = require("../../../../components/admin/controllers/FindUser");
 
 const router = express.Router();
 router.get(`/get-user/`, async (req, res, next) => {

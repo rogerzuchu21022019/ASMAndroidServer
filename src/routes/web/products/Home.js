@@ -11,6 +11,8 @@ router.get("/home", function (req, res, next) {
     register: navigation.REGISTER,
     analystic: navigation.ANALYSTIC,
     data_table: navigation.DATATABLE,
+    category: navigation.CATEGORY,
+    addNews: navigation.ADD_NEWS,
   });
 });
 

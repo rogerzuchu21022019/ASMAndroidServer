@@ -24,5 +24,7 @@ const AddNewsService = async (news, categoryID) => {
   } catch (error) {
     console.log(`Error in AddNewsService: ${error}`);
   }
+
+  
 };
 module.exports = AddNewsService;

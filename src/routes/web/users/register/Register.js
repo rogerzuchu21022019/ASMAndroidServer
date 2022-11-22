@@ -1,5 +1,6 @@
 var express = require("express");
-const registerController = require("../../../../components/users/controllers/Register").default;
+const registerController =
+  require("../../../../components/users/controllers/Register").default;
 
 var router = express.Router();
 const navigation = require(`../../../../utils/client-web/Navigation`);
@@ -19,23 +20,18 @@ router.get("/register", (req, res, next) => {
 
 router.post("/register", async (req, res, next) => {
   try {
-    const { name, email, phone, password, address, imageUrl, role } = req.body;
-    const data = await registerController(
-      name,
+    const { email, password, address, name, phone } = req.body;
+    const user = {
       email,
-      phone,
       password,
       address,
-      imageUrl,
-      role
-    );
-    data ? res.redirect("login") : res.redirect("register");
+      name,
+      phone,
+    };
+    await registerController(user);
+    res.redirect(`/${navigation.LOGIN}`);
   } catch (error) {
-    res.status(400).json({
-      error: true,
-      isRegisted: true,
-      message: error.message,
-    });
+    next(error);
   }
 });
 
