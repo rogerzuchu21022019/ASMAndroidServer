@@ -1,6 +1,6 @@
 const express = require("express");
 const findCategoriesController = require("../../../components/category/controllers/FindCategories");
-const UserAuthMid = require("../../../middlewares/VerifyToken");
+const {UserAuthMid} = require("../../../middlewares/VerifyToken");
 const addNewsController =
   require("../../../components/news/controllers/AddNewsToCategory").default;
 const navigation = require("../../../utils/client-web/Navigation");
@@ -31,23 +31,15 @@ router.get(`/add-news`, async (req, res, next) => {
 
 router.post(`/add-news`, async (req, res, next) => {
   try {
-    let { title, description, imageUrl, author, categoryID } = req.body;
-    imageUrl = "https://loremflickr.com/640/480";
+    const { title, description, imageUrl, author, categoryID } = req.body;
     const news = {
       title,
       description,
       imageUrl,
       author,
     };
-    console.log(
-      "🚀 ~ file: AddNewsToCategory.js ~ line 37 ~ router.post ~ news",
-      news
-    );
-    const data = await addNewsController(news, categoryID);
-    console.log(
-      "🚀 ~ file: AddNewsToCategory.js ~ line 43 ~ router.post ~ data",
-      data
-    );
+   
+    await addNewsController(news, categoryID);
     res.redirect(`/${navigation.HOME}`);
   } catch (error) {
     next(error);

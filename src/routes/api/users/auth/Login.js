@@ -8,6 +8,7 @@ router.post("/auth-login", async (req, res, next) => {
     const { email, password } = req.body;
 
     const data = await LoginController(email, password);
+    console.log("🚀 ~ file: Login.js ~ line 11 ~ router.post ~ data", data)
     data
       ? res.status(200).json({
           error: false,
@@ -21,7 +22,14 @@ router.post("/auth-login", async (req, res, next) => {
           isLoggedIn: false,
           data: {},
         });
-  } catch (error) {}
+  } catch (error) {
+    res.status(404).json({
+      error: true,
+      status: "Login Failed",
+      isLoggedIn: false,
+      data: {},
+    });
+  }
 });
 
 module.exports = router;

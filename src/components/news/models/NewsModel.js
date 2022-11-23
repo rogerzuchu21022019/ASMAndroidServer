@@ -16,7 +16,6 @@ const NewsSchema = new Schema(
     newsID: {
       type: String,
       required: true,
-      default: uuidv4(),
     },
     title: {
       type: String,

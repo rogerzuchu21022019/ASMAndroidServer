@@ -20,4 +20,4 @@ const UpdateServices = async (id, news) => {
     console.log(`Error handler UpdateServices: ${error}`);
   }
 };
-export default UpdateServices;
+module.exports = UpdateServices;

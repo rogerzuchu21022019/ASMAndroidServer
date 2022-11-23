@@ -2,15 +2,14 @@ const express = require("express");
 const findAllController = require("../../../components/products/controller/FindAllProducts");
 const router = express.Router();
 const Redis = require(`ioredis`);
-const UserAuthMid = require("../../../middlewares/VerifyToken");
-const VerifyToken = require("../../../middlewares/VerifyToken");
+const { UserAuthMid } = require("../../../middlewares/VerifyToken");
 require("dotenv").config();
 const redis = new Redis({
   port: process.env.PORT_REDIS,
   host: process.env.HOST_REDIS,
 });
 
-router.get(`/`, VerifyToken, async (req, res) => {
+router.get(`/`, UserAuthMid, async (req, res) => {
   try {
     let cacheRedis = await redis.get(`products`);
     if (cacheRedis) {
@@ -53,6 +52,14 @@ router.get(`/`, VerifyToken, async (req, res) => {
             data: {},
           });
     }
-  } catch (error) {}
+  } catch (error) {
+    res.json({
+      status: "Fail",
+      error: true,
+      message: `Get all products Fail ${error}`,
+      isLoadding: true,
+      data: {},
+    });
+  }
 });
 module.exports = router;

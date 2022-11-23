@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const navigation = require(`../../../utils/client-web/Navigation`);
+
 /* GET home page. */
-router.get("/home", function (req, res, next) {
+router.get("/home", async (req, res, next) => {
+  const data = await findNewsListController();
   res.render("home", {
     home: navigation.HOME,
     login: navigation.LOGIN,
@@ -13,6 +15,7 @@ router.get("/home", function (req, res, next) {
     data_table: navigation.DATATABLE,
     category: navigation.CATEGORY,
     addNews: navigation.ADD_NEWS,
+    newsList: data.docs,
   });
 });
 

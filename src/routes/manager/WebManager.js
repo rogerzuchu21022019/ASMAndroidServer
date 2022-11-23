@@ -25,6 +25,7 @@ const WebManagerRouter = (app, fixPublic) => {
   app.use(SUB_PRODUCTS, RouteProduct.data, fixPublic);
   app.use(SUB_PRODUCTS, RouteProduct.category, fixPublic);
   app.use(SUB_PRODUCTS, RouteProduct.addNews, fixPublic);
+  app.use(SUB_PRODUCTS, RouteProduct.findNews, fixPublic);
 };
 
 module.exports = WebManagerRouter;

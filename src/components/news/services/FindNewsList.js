@@ -11,7 +11,7 @@ const FindNewsListService = async () => {
     };
     const sortReverseArray = {
       sort: {
-        createdAt: -1,
+        _id: -1,
       },
     };
     const data = await News.paginate(query, optionsPaginate, sortReverseArray);

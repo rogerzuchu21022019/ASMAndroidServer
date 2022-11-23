@@ -9,4 +9,4 @@ const FindNewsController = async (id) => {
   }
 };
 
-export default FindNewsController;
+module.exports = FindNewsController;

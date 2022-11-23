@@ -23,7 +23,13 @@ router.put(`/:id/update`, async (req, res, next) => {
           data: null,
         });
   } catch (error) {
-    next(error);
+    res.json({
+      status: `Failed`,
+      message: `Update news failed`,
+      error: true,
+      isUpdated: false,
+      data: null,
+    });
   }
 });
 module.exports = router;

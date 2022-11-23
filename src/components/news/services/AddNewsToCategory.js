@@ -1,8 +1,10 @@
+const { v4: uuidv4 } = require("uuid");
 const News = require("../models/NewsModel");
 
 const AddNewsService = async (news, categoryID) => {
   try {
     const query1 = { newsID: news.newsID };
+    news.newsID = uuidv4().replace(/\-/g, "");
     const setNewValue = {
       $set: news,
     };
@@ -24,7 +26,5 @@ const AddNewsService = async (news, categoryID) => {
   } catch (error) {
     console.log(`Error in AddNewsService: ${error}`);
   }
-
-  
 };
 module.exports = AddNewsService;

@@ -1,4 +1,4 @@
-const updateServices = require("../services/UpdateNews").default;
+const updateServices = require("../services/UpdateNews");
 
 
 const UpdateController = async (id,news) => {

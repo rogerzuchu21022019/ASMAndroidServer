@@ -1,6 +1,6 @@
 const express = require("express");
 const FindByIDController = require("../../../components/products/controller/FindByID");
-const UserAuthMid = require("../../../middlewares/VerifyToken");
+const {UserAuthMid} = require("../../../middlewares/VerifyToken");
 const router = express.Router();
 require("dotenv").config();
 const Redis = require(`ioredis`);

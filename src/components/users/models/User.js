@@ -28,6 +28,7 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
+      select: false,
     },
     address: {
       type: String,
@@ -55,11 +56,14 @@ const UserSchema = new mongoose.Schema(
       type: String,
       trim: true,
       required: false,
+      select: false,
+
     },
     refreshToken: {
       type: String,
       trim: true,
       required: false,
+      select: false,
     },
     createdAt: {
       type: Date,

@@ -165,7 +165,7 @@
                 </ol>
               </nav>
             </div>
-            
+
           </div>
         </div>
         <!-- Default Basic Forms Start -->
@@ -174,11 +174,10 @@
             <div class="pull-left">
               <h4 class="text-blue h4">News Forms</h4>
             </div>
-         
           </div>
-          
+
           <form method="post" action="/<%= addNews  %>">
-             <div class="form-group row">
+            <div class="form-group row">
               <label class="col-sm-12 col-md-2 col-form-label">Name </label>
               <div class="col-sm-12 col-md-10">
                 <input class="form-control" type="text" placeholder="Press name" name="title" required />
@@ -187,37 +186,51 @@
             <div class="form-group row">
               <label class="col-sm-12 col-md-2 col-form-label">Description</label>
               <div class="col-sm-12 col-md-10">
-                <input class="form-control" id="haha"placeholder="Press description" type="text" name="description" required />
+                <input class="form-control" id="haha" placeholder="Press description" type="text" name="description" required />
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-12 col-md-2 col-form-label">Image</label>
               <div class="col-sm-12 col-md-10">
-                <input class="form-control" id="haha" type="file" name="imageUrl" required />
+                <input class="form-control" id="haha" type="file" onchange="loadFile(event)" name="imageUrl" required />
+                <img  id="output" alt="" width="100" height="100">
               </div>
             </div>
-            
+
             <div class="form-group row">
               <label class="col-sm-12 col-md-2 col-form-label">Category</label>
-              <select name="categoryID" >
+              <select name="categoryID">
                 <% categories.forEach(element => { %>
-                 <option value='<%= element._id %>'><%= element.name %> </option>
+                <option value='<%= element._id %>'><%= element.name %> </option>
                 <% }) %>
               </select>
             </div>
             <div class="form-group row">
               <label class="col-sm-12 col-md-2 col-form-label">User</label>
-              <select name="author" >
-                 <option value='<%= user.id %>'><%= user.id%> </option>
+              <select name="author">
+                <option value='<%= user.id %>'><%= user.email%> </option>
               </select>
             </div>
-            
-            
+
+
             <div class="text-right">
-              <button class="btn btn-primary" type="submit" >Create News</button>
+              <button class="btn btn-primary" type="submit">Create News</button>
             </div>
 
           </form>
+
+          <script>
+            const loadFile = function(event) {
+              let reader = new FileReader();
+              reader.onload = function() {
+                const output = document.getElementById('output');
+                output.src = reader.result;
+              };
+              reader.readAsDataURL(event.target.files[0]);
+            };
+          </script>
+
+
           <div class="collapse collapse-box" id="basic-form1">
             <div class="code-box">
               <div class="clearfix">

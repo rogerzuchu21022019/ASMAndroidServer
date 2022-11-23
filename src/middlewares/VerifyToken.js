@@ -12,20 +12,26 @@ const redis = new Redis({
   host: "127.0.0.1",
 });
 
-const UserAuthMid = asyncHandler((req, res, next) => {
+const UserAuthMid = (req, res, next) => {
   // verify token middleware bearer
-  if (!req.headers.authorization) {
+  if (!req.headers["authorization"]) {
     return next(createError(401, `Unauthorized`));
   }
-  const authHeader = req.headers.authorization;
-  const bearer = authHeader.split(` `);
-  const token = bearer[1];
-  const callbackToken = (error, user) => {
-    (req.user = user), next();
-  };
+  const authHeader = req.headers["authorization"];
+  const token = authHeader.split(" ")[1];
+  if (!token) {
+    res.sendStatus(401);
+  }
 
-  JWT.verify(token, ACCESS_TOKEN_KEY, callbackToken);
-});
+  JWT.verify(token, ACCESS_TOKEN_KEY, (error, user) => {
+    if (error) {
+      return next(createError.Unauthorized());
+    }
+    console.log("🚀 ~ file: VerifyToken.js ~ line 27 ~ JWT.verify ~ user", user)
+    req.payload = user;
+    next();
+  });
+};
 
 const UserAuthRefreshMid = (refreshToken) => {
   return new Promise((resolve, reject) => {
@@ -44,4 +50,4 @@ const UserAuthRefreshMid = (refreshToken) => {
     });
   });
 };
-module.exports = [UserAuthMid, UserAuthRefreshMid];
+module.exports = { UserAuthMid, UserAuthRefreshMid };

@@ -1,6 +1,6 @@
 const express = require("express");
 const AddController = require("../../../components/products/controller/AddProduct");
-const UserAuthMid = require("../../../middlewares/VerifyToken");
+const {UserAuthMid} = require("../../../middlewares/VerifyToken");
 const router = express.Router();
 require("dotenv").config();
 
@@ -35,6 +35,14 @@ router.post(`/add-product`, UserAuthMid, async (req, res) => {
           isAdded: false,
           data: {},
         });
-  } catch (error) {}
+  } catch (error) {
+    res.json({
+      status: "Fail",
+      error: true,
+      message: `Add product Fail ${error}`,
+      isAdded: false,
+      data: {},
+    });
+  }
 });
 module.exports = router;

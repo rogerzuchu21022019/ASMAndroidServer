@@ -9,24 +9,25 @@ const LoginController = async (email, password) => {
     const query = { email: email };
 
     const _user = await loginService(email);
+    console.log("🚀 ~ file: Login.js ~ line 12 ~ LoginController ~ _user", _user)
 
     const isValid = await bcrypt.compare(password, _user.password);
     // if (!isValid) {
     //   throw createError.Unauthorized(`Invalid password`);
     // }
+    
 
-    const token = await signToken(_user.id);
-    const refreshToken = await signRefreshToken(_user.id);
+    const token = await signToken(_user);
+    const refreshToken = await signRefreshToken(_user);
     _user.accessToken = token;
     _user.refreshToken = refreshToken;
 
-    const selectFields =
-      "_id email name dob imageUrl role phone address createdAt updatedAt";
-    const user = await User.findOne(query).select(selectFields);
-
+    // const selectFields =
+    //   "-password -__v  -accessToken -refreshToken";
+    // const user = await User.findOne(query).select(selectFields);
     const data = {
       token,
-      user,
+      _user,
     };
 
 

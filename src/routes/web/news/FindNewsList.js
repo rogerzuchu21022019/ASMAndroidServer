@@ -1,31 +1,25 @@
 const express = require("express");
 const findNewsListController = require("../../../components/news/controllers/FindNewsList");
+const { UserAuthMid } = require("../../../middlewares/VerifyToken");
 
+const navigation = require("../../../utils/client-web/Navigation");
 const router = express.Router();
-router.get(`/`, async (req, res, next) => {
+
+router.get(`/home`, async (req, res, next) => {
   try {
     const data = await findNewsListController();
-     const paginate = {
-       totalItem: data.totalDocs,
-       totalPage: data.totalPages,
-       currentPage: data.page,
-       newsList: data.docs,
-     };
-    data
-      ? res.json({
-          status: "Success",
-          message: "Get News List successfully",
-          error: false,
-          isLoading: false,
-          data: paginate,
-        })
-      : res.json({
-          status: "Fail",
-          message: "Get News List fail",
-          error: true,
-          isLoading: true,
-          data: null,
-        });
+    res.render("home", {
+      home: navigation.HOME,
+      login: navigation.LOGIN,
+      logout: navigation.LOGOUT,
+      chart: navigation.CHART,
+      register: navigation.REGISTER,
+      analystic: navigation.ANALYSTIC,
+      data_table: navigation.DATATABLE,
+      category: navigation.CATEGORY,
+      addNews: navigation.ADD_NEWS,
+      newsList: data.docs,
+    });
   } catch (error) {
     next(error);
   }
