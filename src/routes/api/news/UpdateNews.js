@@ -1,12 +1,22 @@
 const express = require(`express`);
-const UpdateNewsController = require(`../../../components/news/controllers/UpdateNews`);
+const updateNewsController = require(`../../../components/news/controllers/UpdateNews`);
+const uploadFile = require("../../../utils/api/UploadFile");
 const router = express.Router();
 
 router.put(`/:id/update`, async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { news } = req.body;
-    const data = await UpdateNewsController(id, news);
+    let { title, description, imageUrl } = req.body;
+    
+    // imageUrl = await uploadFile(req, imageUrl);
+
+    const news = {
+      title,
+      description,
+      imageUrl,
+    };
+
+    const data = await updateNewsController(id, news);
     data
       ? res.json({
           status: `Success`,

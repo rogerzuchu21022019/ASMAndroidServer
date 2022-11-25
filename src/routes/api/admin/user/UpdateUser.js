@@ -5,36 +5,19 @@ const router = express.Router();
 router.put(
   `/update-user/:id`,
   asyncHandle(async (req, res, next) => {
-    const { name, phone, address, imageUrl, dob } = req.body;
-    const { id } = req.params;
-
     try {
-      const data = await updateUserController(
-        name,
-        phone,
-        address,
-        imageUrl,
-        dob,
-        id
-      );
+      const { name, phone, address, imageUrl, dob } = req.body;
+      const { id } = req.params;
+      const user = { name, phone, address, imageUrl, dob };
+
+      const data = await updateUserController(user, id);
       data
         ? res.json({
             status: "Success",
             message: "Update is successfully",
             error: false,
             isUpdated: true,
-            data: {
-              id: data.id,
-              name: data.name,
-              email: data.email,
-              phone: data.phone,
-              address: data.address,
-              imageUrl: data.imageUrl,
-              dob: data.dob,
-              role: data.role,
-              createdAt: data.createdAt,
-              updatedAt: data.updatedAt,
-            },
+            data: data,
           })
         : res.json({
             status: "Fail",

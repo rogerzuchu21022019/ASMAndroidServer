@@ -14,9 +14,10 @@ const WebManagerRouter = (app, fixPublic) => {
   app.use(MAIN, RouteAdmin.getUserBy, fixPublic);
   /* Users */
 
-  app.use(MAIN, RouteUser.loginRouter, fixPublic);
-  app.use(MAIN, RouteUser.logoutRouter, fixPublic);
-  app.use(SUB_USERS, RouteUser.registertRouter, fixPublic);
+  app.use(MAIN, RouteUser.login, fixPublic);
+  app.use(MAIN, RouteUser.logout, fixPublic);
+  app.use(SUB_USERS, RouteUser.register, fixPublic);
+  app.use(SUB_USERS, RouteUser.update, fixPublic);
 
   /* Products */
   app.use(MAIN, RouteProduct.home, fixPublic);
@@ -26,6 +27,7 @@ const WebManagerRouter = (app, fixPublic) => {
   app.use(SUB_PRODUCTS, RouteProduct.category, fixPublic);
   app.use(SUB_PRODUCTS, RouteProduct.addNews, fixPublic);
   app.use(SUB_PRODUCTS, RouteProduct.findNews, fixPublic);
+  app.use(SUB_PRODUCTS, RouteProduct.update, fixPublic);
 };
 
 module.exports = WebManagerRouter;

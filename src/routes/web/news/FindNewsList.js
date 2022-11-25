@@ -7,7 +7,9 @@ const router = express.Router();
 
 router.get(`/home`, async (req, res, next) => {
   try {
-    const data = await findNewsListController();
+    const { page } = req.query;
+    const { user } = req.cookies;
+    const data = await findNewsListController(page);
     res.render("home", {
       home: navigation.HOME,
       login: navigation.LOGIN,
@@ -18,7 +20,14 @@ router.get(`/home`, async (req, res, next) => {
       data_table: navigation.DATATABLE,
       category: navigation.CATEGORY,
       addNews: navigation.ADD_NEWS,
-      newsList: data.docs,
+      update: navigation.UPDATE_INFO,
+      user:user,
+      paginate: {
+        totalItems: data.totalDocs,
+        currentPage: data.currentPage,
+        totalPages: data.totalPages,
+        newsList: data.docs,
+      },
     });
   } catch (error) {
     next(error);

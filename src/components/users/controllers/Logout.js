@@ -1,11 +1,10 @@
 
 const bcrypt = require(`bcrypt`);
-const { signToken, signRefreshToken } = require("../../../utils/server/Jwt");
 const logoutService = require("../services/Logout");
-const LogoutController = async (user) => {
+const LogoutController = async (refreshToken) => {
   try {
-    const payload = await logoutService(user);
-    return payload
+    const refToken = await logoutService(refreshToken);
+    return refToken
   } catch (error) {}
 };
 module.exports = LogoutController;

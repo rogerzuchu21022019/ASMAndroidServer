@@ -1,6 +1,6 @@
 const User = require("../../users/models/User");
 
-const FindUserService = async () => {
+const FindUsersService = async () => {
   /*  Query sort list reverse in mongodb  */
   const query = {};
   const sortReverseArray = {
@@ -14,4 +14,4 @@ const FindUserService = async () => {
   //
 };
 
-module.exports = FindUserService;
+module.exports = FindUsersService;

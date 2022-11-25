@@ -1,28 +1,21 @@
-const User = require("../models/User");
+const TokenModel = require("../../token/models/Token");
 
-const LogoutService = async (user) => {
+const LogoutService = async (refreshToken) => {
   try {
-    const query = {
-      _id: user.id,
-    };
-    const setNewValue = {
-      $set: {
-        ...user,
-        accessToken: "",
-        refreshToken: "",
+    const query = { refreshToken: refreshToken };
+    const updateValue ={
+      $pull: {
+        refreshToken: refreshToken,
       },
-    };
-    const optionsUpdate = {
-      new: true,
-      upsert: true,
-    };
-    const _user = await User.findByIdAndUpdate(
-      query,
-      setNewValue,
-      optionsUpdate
-    );
-    console.log("🚀 ~ file: Logout.js ~ line 24 ~ LogoutService ~ _user", _user)
-    return _user;
+    }
+    const options = { upsert: true, new: true };
+    const refToken = await TokenModel.findOneAndUpdate(query, updateValue, options);
+    return refToken;
+
+
+    // const query = { refreshToken: refreshToken };
+    // const refToken = await TokenModel.findOne(query);
+    // return refToken;
   } catch (error) {
     console.log(`Erorr handler LogoutService: `, error);
   }

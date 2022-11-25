@@ -1,6 +1,6 @@
 const User = require("../../users/models/User");
 
-const GetUserByService = async (email) => {
+const FindUserService = async (email) => {
   const query = {
     email,
   };
@@ -10,4 +10,4 @@ const GetUserByService = async (email) => {
   return res;
 };
 
-module.exports = GetUserByService;
+module.exports = FindUserService;

@@ -2,6 +2,8 @@ import News from "../models/NewsModel";
 // const News = require("../models/NewsModel");
 const AddCommentService = async (id, comment) => {
   try {
+
+    const query1 = {}
     const query = {
       _id: id,
     };

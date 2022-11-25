@@ -3,13 +3,17 @@ const findNewsListController = require("../../../components/news/controllers/Fin
 const { UserAuthMid } = require("../../../middlewares/VerifyToken");
 
 const router = express.Router();
-router.get(`/`, UserAuthMid, async (req, res, next) => {
+router.get(`/`, async (req, res, next) => {
   try {
-    const user = req.payload
-    const header = req.headers
-    console.log("🚀 ~ file: FindNewsList.js ~ line 10 ~ router.get ~ header", header)
-    console.log(`user header = `,user);
-    const data = await findNewsListController();
+    const {  page } = req.query;
+    const user = req.payload;
+    const header = req.headers;
+    console.log(
+      "🚀 ~ file: FindNewsList.js ~ line 10 ~ router.get ~ header",
+      header
+    );
+    console.log(`user header = `, user);
+    const data = await findNewsListController(page);
     const paginate = {
       totalItem: data.totalDocs,
       totalPage: data.totalPages,

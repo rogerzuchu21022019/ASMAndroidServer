@@ -1,10 +1,18 @@
 // import {News} from "../models/NewsModel";
+const UploadFile = require("../../../utils/api/UploadFile");
 const News = require("../models/NewsModel");
 const UpdateServices = async (id, news) => {
   try {
     const query = { _id: id };
+    
+    const newsUnderDB = await News.findById(id)
+
     const updateValue = {
-      $set: news,
+      $set: {
+        title: news.title,
+        description: news.description,
+        imageUrl: news.imageUrl ? news.imageUrl : newsUnderDB.imageUrl,
+      },
     };
     const optionsUpdate = {
       new: true,

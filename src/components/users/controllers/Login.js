@@ -1,15 +1,17 @@
 const bcrypt = require('bcrypt');
 const createError = require("http-errors");
 const { signToken, signRefreshToken } = require('../../../utils/server/Jwt.js');
+const generateToken = require('../../../utils/server/TokenGenerate.js');
 const User = require('../models/User.js');
 const loginService = require("../services/Login");
+const createTokenController = require('../../token/controllers/CreateToken');
+
 
 const LoginController = async (email, password) => {
   try {
     const query = { email: email };
 
     const _user = await loginService(email);
-    console.log("🚀 ~ file: Login.js ~ line 12 ~ LoginController ~ _user", _user)
 
     const isValid = await bcrypt.compare(password, _user.password);
     // if (!isValid) {
@@ -17,17 +19,14 @@ const LoginController = async (email, password) => {
     // }
     
 
-    const token = await signToken(_user);
-    const refreshToken = await signRefreshToken(_user);
-    _user.accessToken = token;
-    _user.refreshToken = refreshToken;
+    const { accessToken, refreshToken } = await generateToken(_user)
 
-    // const selectFields =
-    //   "-password -__v  -accessToken -refreshToken";
-    // const user = await User.findOne(query).select(selectFields);
+    await createTokenController(_user,refreshToken)
+   
     const data = {
-      token,
+      accessToken,
       _user,
+      refreshToken
     };
 
 

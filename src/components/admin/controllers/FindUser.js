@@ -1,8 +1,8 @@
-const get_User_By_Service = require("../services/FindUser");
+const findUserService = require("../services/FindUser");
 
-const Get_User_By_Controller = async (email) => {
-  const res = await get_User_By_Service(email);
+const FindUserController = async (email) => {
+  const res = await findUserService(email);
   return res;
 };
 
-module.exports = Get_User_By_Controller;
+module.exports = FindUserController;

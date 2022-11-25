@@ -1,24 +1,10 @@
-const updateUserSerive = require("../services/UpdateUser");
+const updateService = require("../services/UpdateUser");
 
-const UpdateUserController = async (
-  name,
-  phone,
-  address,
-  imageUrl,
-  dob,
-  id
-) => {
+const UpdateController = async (user, id) => {
   try {
-    const response = await updateUserSerive(
-      name,
-      phone,
-      address,
-      imageUrl,
-      dob,
-      id
-    );
+    const response = await updateService(user, id);
     return response;
   } catch (error) {}
 };
 
-module.exports = UpdateUserController;
+module.exports = UpdateController;

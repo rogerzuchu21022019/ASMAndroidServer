@@ -1,5 +1,5 @@
-const getUserBy = require(`./admin/user/Get_User_By`)
-const getUsers = require(`./admin/user/Get_Users`)
+const getUserBy = require(`./admin/user/FindUser`)
+const getUsers = require(`./admin/user/FindUsers`)
 module.exports = {
     getUserBy,
     getUsers,

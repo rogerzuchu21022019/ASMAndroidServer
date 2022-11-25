@@ -1,13 +1,13 @@
 // import {News} from "../models/NewsModel";
 const News = require("../models/NewsModel");
 
-const FindNewsListService = async () => {
+const FindNewsListService = async (page) => {
   try {
     const query = { };
 
     const optionsPaginate = {
       limit: 10,
-      page: 1,
+      page: page,
     };
     const sortReverseArray = {
       sort: {

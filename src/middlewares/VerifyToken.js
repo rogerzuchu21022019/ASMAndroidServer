@@ -2,6 +2,9 @@ const JWT = require(`jsonwebtoken`);
 const asyncHandler = require(`express-async-handler`);
 const createError = require(`http-errors`);
 require(`dotenv`).config();
+const TokenModel = require("../components/token/models/Token");
+
+
 const {
   ACCESS_TOKEN_KEY,
   REFRESH_TOKEN_KEY,
@@ -19,6 +22,7 @@ const UserAuthMid = (req, res, next) => {
   }
   const authHeader = req.headers["authorization"];
   const token = authHeader.split(" ")[1];
+  console.log("🚀 ~ file: VerifyToken.js ~ line 25 ~ UserAuthMid ~ token", token)
   if (!token) {
     res.sendStatus(401);
   }
@@ -27,7 +31,10 @@ const UserAuthMid = (req, res, next) => {
     if (error) {
       return next(createError.Unauthorized());
     }
-    console.log("🚀 ~ file: VerifyToken.js ~ line 27 ~ JWT.verify ~ user", user)
+    console.log(
+      "🚀 ~ file: VerifyToken.js ~ line 27 ~ JWT.verify ~ user",
+      user
+    );
     req.payload = user;
     next();
   });
@@ -50,4 +57,14 @@ const UserAuthRefreshMid = (refreshToken) => {
     });
   });
 };
-module.exports = { UserAuthMid, UserAuthRefreshMid };
+
+const UserVerifyRefMid = (refreshToken) => {
+  return new Promise((resolve, reject) => {
+    JWT.verify(refreshToken, REFRESH_TOKEN_KEY, (error, tokenDetails) => {
+      if (error)
+        return reject({ error: true, message: "Invalid refresh token" });
+      resolve(tokenDetails);
+    });
+  });
+};
+module.exports = { UserAuthMid, UserAuthRefreshMid,UserVerifyRefMid };

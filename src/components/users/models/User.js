@@ -52,19 +52,6 @@ const UserSchema = new mongoose.Schema(
       type: String,
       default: "User",
     },
-    accessToken: {
-      type: String,
-      trim: true,
-      required: false,
-      select: false,
-
-    },
-    refreshToken: {
-      type: String,
-      trim: true,
-      required: false,
-      select: false,
-    },
     createdAt: {
       type: Date,
       default: Date.now,
@@ -92,9 +79,6 @@ UserSchema.pre(`save`, async function (next) {
   }
 });
 
-/* UserSchema.method là bên cung cấp sẵn */
-/* UserSchema.virtual  */
-/* UserSchema.methods là mình tự custome */
 
 UserSchema.plugin(mongoosePaginate);
 UserSchema.method("toJSON", function () {

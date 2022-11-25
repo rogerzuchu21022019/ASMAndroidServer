@@ -18,10 +18,6 @@ const FindNewsService = async (id) => {
       .select(selectFields)
       .populate(queryCategory)
       .populate(queryAuthor);
-    console.log(
-      "🚀 ~ file: FindNews.js ~ line 9 ~ FindNewsService ~ data",
-      data
-    );
     return data;
   } catch (error) {
     console.log(`Error handler CreateCategory: ${error}`);

@@ -4,8 +4,7 @@ import createError from "http-errors";
 const LoginService = async (email) => {
   try {
     const query = { email: email };
-    const user = await User.findOne(query).select("+password -accessToken -refreshToken");
-    console.log("🚀 ~ file: Login.js ~ line 8 ~ LoginService ~ email", email)
+    const user = await User.findOne(query).select("+password");
 
     if (!user) {
       throw createError(404, `User not found`);

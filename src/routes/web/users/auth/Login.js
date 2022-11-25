@@ -24,11 +24,11 @@ router.post("/auth-login", async (req, res, next) => {
     const data = await LoginController(email, password);
     console.log("🚀 ~ file: Login.js ~ line 25 ~ router.post ~ data", data);
 
-    data.user.accessToken = data.token;
-    data.user.refreshToken = data.refreshToken;
+    data._user.accessToken = data.token;
+    data._user.refreshToken = data.refreshToken;
 
-    if (data.user) {
-      res.cookie(`user`, data.user, {
+    if (data._user) {
+      res.cookie(`user`, data._user, {
         maxAge: 24 * 60 * 60 * 1000,
         httpOnly: true,
       });

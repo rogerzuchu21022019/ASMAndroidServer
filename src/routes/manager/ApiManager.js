@@ -33,6 +33,7 @@ const ApiManager = (app, fixPublic) => {
 
   app.use(MAIN, ApiUser.login, fixPublic);
   app.use(MAIN, ApiUser.logout, fixPublic);
+  app.use(MAIN, ApiUser.refresh, fixPublic);
   app.use(SUB_USERS, ApiUser.register, fixPublic);
 
   /* Products */

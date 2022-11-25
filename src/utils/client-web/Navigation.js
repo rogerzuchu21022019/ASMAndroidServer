@@ -3,6 +3,7 @@ const Router = {
   LOGIN: "auth-login",
   LOGOUT: "auth-logout",
   REGISTER: "users/register",
+  UPDATE_INFO: "users/update-info",
   CHART: "products/chart",
   ANALYSTIC: "products/analystic",
   DATATABLE: "products/data-table",

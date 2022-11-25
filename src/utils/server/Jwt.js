@@ -8,7 +8,7 @@ const redis = new Redis({
 });
 
 const signToken = (user) => {
-  console.log("🚀 ~ file: Jwt.js ~ line 11 ~ signToken ~ user", user)
+  
   const payload = {
     user,
   };
